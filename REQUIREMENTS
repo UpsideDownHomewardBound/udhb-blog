@@ -1,0 +1,3 @@
+-e git+https://github.com/jMyles/mezzanine#egg=mezzanine
+django
+-e git+https://github.com/jMyles/hendrix#egg=hendrix
