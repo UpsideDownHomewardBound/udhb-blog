@@ -1,2 +1,5 @@
 *.pyc
 *.db
+/static/media/uploads
+.project
+.pydevproject
