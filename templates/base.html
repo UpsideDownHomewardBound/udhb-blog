@@ -1,0 +1,10 @@
+{% overextends "base.html" %}
+{% load staticfiles %}
+{% block extra_css %}
+{# <link rel="stylesheet" href="{% static "css/kayemyles.css" %}"> #}
+<link rel="stylesheet/less" type="text/css" media="all" href="{% static "css/kayemyles-lavish.less" %}" />
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static "js/less-1.7.0.js" %}" type="text/javascript"></script>
+{% endblock %}

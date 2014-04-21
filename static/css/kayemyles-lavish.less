@@ -1,0 +1,68 @@
+@the-purple:            #9D0A9D;
+
+@holy-red:              #ED0F1A;
+@dusty-red:             #913E42;
+@pale-pink:             #FFE6E7;
+
+@crazy-blue:            #401CA5;
+@dark-blue:             #16034B;
+@light-blue:            #C4B6ED;
+
+
+
+#gradient {
+
+  .horizontal(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+    background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
+    background-repeat: repeat-x;
+  }
+
+  .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+    background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
+    background-repeat: repeat-x;
+  }
+
+}
+
+
+body {
+  background-color: @light-blue;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  color: @holy-red;
+}
+
+a {
+  color: @dark-blue;
+}
+
+.form-group > input[type="text"], .form-group > input[type="password"], .form-group > input[type="datetime"], .form-group > input[type="datetime-local"], .form-group > input[type="date"], .form-group > input[type="month"], .form-group > input[type="time"], .form-group > input[type="week"], .form-group > input[type="number"], .form-group > input[type="email"], .form-group > input[type="url"], .form-group > input[type="search"], .form-group > input[type="tel"], .form-group > input[type="color"], .form-group > select, .form-group > textarea {
+  background-color: @pale-pink;
+}
+
+.breadcrumb {
+  #gradient > .vertical(@the-purple, @dark-blue);
+  a {
+    color: white;
+    }
+}
+
+.navbar-default {
+  #gradient > .vertical(@the-purple, @dark-blue);
+      .navbar-brand, .navbar-nav > li > a, a {
+        color: @light-blue;
+      }
+
+      .navbar-nav > .active > a {
+        #gradient > .vertical(@pale-pink, @dark-blue);
+        color: white;
+      }
+  }
+
+.panel {
+  background-color: @light-blue;
+  border-color: @dusty-red;
+  border-style: groove;
+  border-width: 2px;
+  }
