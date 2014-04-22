@@ -1,4 +1,5 @@
 @the-purple:            #9D0A9D;
+@dark-purple:           #470147;
 
 @holy-red:              #ED0F1A;
 @dusty-red:             #913E42;
@@ -9,6 +10,13 @@
 @light-blue:            #C4B6ED;
 
 
+@font-face {
+        font-family: 'coconutpoinnt';
+        src: url('http://localhost:8383/static/fonts/coconut-poinnt.otf') format("opentype");
+        font-weight: normal;
+        font-style: normal;
+
+    }
 
 #gradient {
 
@@ -26,10 +34,17 @@
 
 
 body {
-  background-color: @light-blue;
+  padding-top: 0;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, .h1 {
+  color: @dark-purple;
+  font-family: coconutpoinnt;
+  font-size: 5em;
+  margin: 0 0 -17px;
+}
+
+h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
   color: @holy-red;
 }
 
@@ -43,12 +58,33 @@ a {
 
 .breadcrumb {
   #gradient > .vertical(@the-purple, @dark-blue);
+
   a {
     color: white;
-    }
+  }
+
+  .active {
+    color: @holy-red;
+    font-weight: bold;
+  }
+
 }
 
+.post-meta {
+  a {
+    color: @the-purple;
+  }
+}
+
+#page-wrapper {
+  position:relative;
+  margin-top: 449px;
+  background-color: @light-blue;
+}
+
+
 .navbar-default {
+  position:static;
   #gradient > .vertical(@the-purple, @dark-blue);
       .navbar-brand, .navbar-nav > li > a, a {
         color: @light-blue;
@@ -66,3 +102,24 @@ a {
   border-style: groove;
   border-width: 2px;
   }
+
+.tree {
+
+  .active > a {
+    background-color: @holy-red;
+  }
+
+  li > a:hover {
+    background-color: @pale-pink;
+  }
+
+}
+
+.sticky-top {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-top: 0;
+}
