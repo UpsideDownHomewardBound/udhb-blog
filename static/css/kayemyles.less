@@ -12,7 +12,7 @@
 
 @font-face {
         font-family: 'coconutpoinnt';
-        src: url('http://localhost:8383/static/fonts/coconut-poinnt.otf') format("opentype");
+        src: url('/static/fonts/coconut-poinnt.otf') format("opentype");
         font-weight: normal;
         font-style: normal;
 
@@ -38,10 +38,14 @@ body {
 }
 
 h1, .h1 {
-  color: @dark-purple;
-  font-family: coconutpoinnt;
-  font-size: 5em;
-  margin: 0 0 -17px;
+    color: #FFFFFF;
+    font-family: coconutpoinnt;
+    font-size: 7em;
+    margin: 0 0 -8px;
+    position: fixed;
+    top: 30px;
+    line-height: .9em;
+    width:50%;
 }
 
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
@@ -123,3 +127,18 @@ a {
   z-index: 100;
   border-top: 0;
 }
+
+.semi-unsticky-title {
+  color: @the-purple + 180;
+  font-size: 6em;
+  top:150px;
+  width:75%;
+}
+
+.unsticky-title {
+  position: static;
+  color: @the-purple;
+  font-size: 5em;
+  width:100%;
+}
+
