@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'coconutpoinnt';
-  src: url('http://localhost:8383/static/fonts/coconut-poinnt.otf') format("opentype");
+  src: url('/static/fonts/coconut-poinnt.otf') format("opentype");
   font-weight: normal;
   font-style: normal;
 }
@@ -9,10 +9,14 @@ body {
 }
 h1,
 .h1 {
-  color: #470147;
+  color: #FFFFFF;
   font-family: coconutpoinnt;
-  font-size: 5em;
-  margin: 0 0 -17px;
+  font-size: 7em;
+  margin: 0 0 -8px;
+  position: fixed;
+  top: 30px;
+  line-height: .9em;
+  width: 50%;
 }
 h2,
 h3,
@@ -100,4 +104,16 @@ a {
   top: 0;
   z-index: 100;
   border-top: 0;
+}
+.semi-unsticky-title {
+  color: #ffbeff;
+  font-size: 6em;
+  top: 150px;
+  width: 75%;
+}
+.unsticky-title {
+  position: static;
+  color: #9d0a9d;
+  font-size: 5em;
+  width: 100%;
 }

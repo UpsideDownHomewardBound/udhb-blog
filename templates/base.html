@@ -54,17 +54,26 @@
 
 {# KM TODO: Move this to our own js file #}
 <script type="text/javascript">
-    $(document).ready(function() {
+  $(document).ready(function() {
     var stickyNavTop = $('.navbar').offset().top;
 
     var stickyNav = function(){
-    var scrollTop = $(window).scrollTop();
+        var scrollTop = $(window).scrollTop();
 
-    if (scrollTop > stickyNavTop) {
-        $('.navbar').addClass('sticky-top');
-    } else {
-        $('.navbar').removeClass('sticky-top');
-    }
+        if (scrollTop > stickyNavTop) {
+            $('.navbar').addClass('sticky-top');
+        } else {
+            $('.navbar').removeClass('sticky-top');
+        }
+
+        if (20 < scrollTop && scrollTop < 180  ) {
+           $('h1').addClass('semi-unsticky-title').removeClass('unsticky-title');;
+        } else if (scrollTop > 180) {
+           $('h1').addClass('unsticky-title').removeClass('semi-unsticky-title');
+        } else {
+          $('h1').removeClass('semi-unsticky-title unsticky-title');
+        }
+
     };
 
     stickyNav();
@@ -72,7 +81,7 @@
     $(window).scroll(function() {
         stickyNav();
     });
-    });
+});
 </script>
 
 </head>
