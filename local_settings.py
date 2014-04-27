@@ -1,5 +1,6 @@
 
 DEBUG = True
+DEV_SERVER = True
 
 # Make these unique, and don't share it with anybody.
 SECRET_KEY = "1c936be3-d0b6-4ff3-98e7-e52ab714bde2ee41d22c-3619-4b7f-af3a-2f183bbaa80c6f82985a-0a5e-426d-923c-05e10625ecfc"
