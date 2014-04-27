@@ -2,4 +2,4 @@
 *.db
 /static/media/uploads
 .project
-.pydevproject
+.pydev*

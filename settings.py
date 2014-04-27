@@ -252,6 +252,7 @@ INSTALLED_APPS = (
     "mezzanine.galleries",
     "mezzanine.twitter",
     'hendrix',
+    'apps.blogging'
     #"mezzanine.accounts",
     #"mezzanine.mobile",
 )
@@ -307,7 +308,7 @@ PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 OPTIONAL_APPS = (
     "debug_toolbar",
     "django_extensions",
-    "compressor",
+    "or",
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
@@ -352,6 +353,10 @@ except ImportError:
 
 HENDRIX_CHILD_RESOURCES = (
     'static.StaticFilesResource',
+)
+
+COMPRESS_PRECOMPILERS = (
+   ('text/less', 'lessc {infile} {outfile}'),
 )
 
 

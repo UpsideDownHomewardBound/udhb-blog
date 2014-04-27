@@ -166,6 +166,9 @@ body.popup .breadcrumbs + ul.messagelist {
     font-size: 15px;
     color: #ccc;
 }
+.dropdown-menu form {
+    display: none;
+}
 #side-panel-toggle {
     background-color: #eee;
     cursor: pointer;
@@ -281,4 +284,14 @@ td, th, th a, label, .help, p.help {
 }
 #settings-form .integerfield {
     width: 30px !important;
+}
+
+#changelist .send_tweet_container {
+    display: none;
+}
+.send_tweet_container {
+    margin: -27px 0 -11px 250px;
+}
+.send_tweet_container .vCheckboxLabel {
+    margin-left: 5px;
 }
