@@ -7,16 +7,8 @@
 body {
   padding-top: 0;
 }
-h1,
-.h1 {
-  color: #FFFFFF;
-  font-family: coconutpoinnt;
-  font-size: 7em;
-  margin: 0 0 -8px;
-  position: fixed;
-  top: 30px;
-  line-height: .9em;
-  width: 50%;
+.banner {
+  position: relative;
 }
 h2,
 h3,
@@ -67,8 +59,9 @@ a {
 }
 #page-wrapper {
   position: relative;
-  margin-top: 449px;
+  margin-top: 656px;
   background-color: #c4b6ed;
+  z-index: 150;
 }
 .navbar-default {
   position: static;
@@ -97,6 +90,32 @@ a {
 .tree li > a:hover {
   background-color: #ffe6e7;
 }
+#banner-title {
+  font-family: coconutpoinnt;
+  z-index: 200;
+}
+.title-default {
+  color: #FFFFFF;
+  font-size: 7em;
+  bottom: 350px;
+  line-height: .9em;
+  width: 600px;
+  text-shadow: 4px 4px #470147;
+  position: relative;
+  height: 0;
+}
+.title-scrolled {
+  color: #9d0a9d;
+  font-size: 5em;
+  line-height: 55px;
+  margin: 0;
+  position: static;
+  top: 30px;
+  width: 1140px;
+}
+#top-content-container {
+  margin-top: 0px;
+}
 .sticky-top {
   position: fixed;
   width: 100%;
@@ -105,15 +124,19 @@ a {
   z-index: 100;
   border-top: 0;
 }
-.semi-unsticky-title {
-  color: #ffbeff;
-  font-size: 6em;
-  top: 150px;
-  width: 75%;
-}
-.unsticky-title {
-  position: static;
-  color: #9d0a9d;
-  font-size: 5em;
+#banner-title.banner-sticky-top {
+  background-color: #c4b6ed;
+  left: 0;
+  padding-left: 32px;
+  padding-top: 10px;
+  position: fixed;
+  top: 50px;
   width: 100%;
+}
+#top-content-container.top-container-offset {
+  margin-top: 400px;
+}
+footer {
+  background-color: #c4b6ed;
+  border-top: #9d0a9d;
 }

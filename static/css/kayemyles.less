@@ -37,15 +37,8 @@ body {
   padding-top: 0;
 }
 
-h1, .h1 {
-    color: #FFFFFF;
-    font-family: coconutpoinnt;
-    font-size: 7em;
-    margin: 0 0 -8px;
-    position: fixed;
-    top: 30px;
-    line-height: .9em;
-    width:50%;
+.banner {
+  position:relative;
 }
 
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
@@ -82,8 +75,9 @@ a {
 
 #page-wrapper {
   position:relative;
-  margin-top: 449px;
+  margin-top: 656px;
   background-color: @light-blue;
+  z-index:150;
 }
 
 
@@ -117,6 +111,37 @@ a {
     background-color: @pale-pink;
   }
 
+
+}
+
+#banner-title {
+   font-family: coconutpoinnt;
+   z-index:200;
+}
+
+.title-default {
+  color: #FFFFFF;
+  font-size: 7em;
+  bottom:350px;
+  line-height: .9em;
+  width:600px;
+  text-shadow: 4px 4px @dark-purple;
+  position: relative;
+  height:0;
+}
+
+.title-scrolled {
+  color: @the-purple;
+    font-size: 5em;
+    line-height: 55px;
+    margin: 0;
+    position: static;
+    top: 30px;
+    width: 1140px;
+}
+
+#top-content-container {
+  margin-top:0px;
 }
 
 .sticky-top {
@@ -128,17 +153,21 @@ a {
   border-top: 0;
 }
 
-.semi-unsticky-title {
-  color: @the-purple + 180;
-  font-size: 6em;
-  top:150px;
-  width:75%;
+#banner-title.banner-sticky-top {
+    background-color: @light-blue;
+    left: 0;
+    padding-left: 32px;
+    padding-top: 10px;
+    position: fixed;
+    top: 50px;
+    width: 100%;
 }
 
-.unsticky-title {
-  position: static;
-  color: @the-purple;
-  font-size: 5em;
-  width:100%;
+#top-content-container.top-container-offset {
+    margin-top:400px;
 }
 
+footer {
+  background-color: @light-blue;
+  border-top: @the-purple;
+  }
