@@ -3,3 +3,4 @@
 /static/media/uploads
 .project
 .pydev*
+db_settings.py
