@@ -35,6 +35,7 @@
 
 body {
   padding-top: 0;
+  font-family: Tahoma;
 }
 
 .banner {
@@ -83,16 +84,40 @@ a {
 
 .navbar-default {
   position:static;
+  margin-bottom:0;
   #gradient > .vertical(@the-purple, @dark-blue);
-      .navbar-brand, .navbar-nav > li > a, a {
-        color: @light-blue;
-      }
 
-      .navbar-nav > .active > a {
-        #gradient > .vertical(@pale-pink, @dark-blue);
-        color: white;
-      }
+  .navbar-brand, .navbar-nav > li > a, a {
+    color: @light-blue;
   }
+
+  .navbar-nav > .active > a {
+    #gradient > .vertical(@pale-pink, @dark-blue);
+    color: white;
+  }
+
+  .navbar-text {
+    font-size: 15px;
+    line-height: 100%;
+    margin: 10px 20px 0 5px;
+    padding: 0;
+    font-style: normal;
+  }
+  #twitter-handles {
+    float:left;
+    margin-top:10px;
+
+    a {
+      color:@crazy-blue;
+      font-size:1.3em;
+      text-shadow: 1px 3px 9px @pale-pink;
+      margin-left:10px;
+    }
+    a:hover {
+      color:@pale-pink;
+    }
+  }
+}
 
 .panel {
   background-color: @light-blue;
