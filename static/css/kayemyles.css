@@ -97,7 +97,7 @@ a {
   text-shadow: 1px 3px 9px #ffe6e7;
   margin-left: 10px;
 }
-.navbar-default #twitter-handles a:hover {
+.navbar-default #twitter-handles a.hover {
   color: #ffe6e7;
 }
 .panel {
@@ -111,6 +111,22 @@ a {
 }
 .tree li > a:hover {
   background-color: #ffe6e7;
+}
+.banner .acro-hover {
+  position: fixed;
+  z-index: 125;
+}
+.banner #jMyles-hover {
+  height: 220px;
+  left: 490px;
+  top: 390px;
+  width: 500px;
+}
+.banner #cKaye-hover {
+  height: 220px;
+  left: 530px;
+  top: 140px;
+  width: 500px;
 }
 #banner-title {
   font-family: coconutpoinnt;

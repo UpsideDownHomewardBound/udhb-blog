@@ -55,6 +55,25 @@
 {# KM TODO: Move this to our own js file #}
 <script type="text/javascript">
   $(document).ready(function() {
+
+    $('#twitter-handles a').hover(
+        function() {
+            $(this).addClass('hover');
+        }, function() {
+            $(this).removeClass('hover');
+        }
+    );
+
+    $('.acro-hover').hover(
+        function() {
+          person = $(this).attr('person');
+          $('#twitter-handles .' + person).addClass('hover');
+          },function() {
+          person = $(this).attr('person');
+          $('#twitter-handles .' + person).removeClass('hover');
+          }
+          )
+
     var stickyNavTop = $('.navbar').offset().top;
     var bannerHeight = $('#banner-image').height();
     $('#page-wrapper').css('marginTop', bannerHeight);
@@ -104,6 +123,8 @@
 
 <div class="banner">
   <img id="banner-image" class="sticky-top" src="{% static "img/ptbanner2.jpg" %}">
+  <div id="jMyles-hover" class="acro-hover" person="jMyles"></div>
+  <div id="cKaye-hover" class="acro-hover" person="cKaye"></div>
 </div>
 
 {# This is what wraps the rest of the page, after the image, so that it all scrolls up together over the image #}
@@ -124,8 +145,8 @@
         </a>
     </p>
     <span id="twitter-handles">
-        <a href="http://twitter.com/jMylesHolmes">@jMyles</a>
-        <a href="http://twitter.com/ckaye89">@cKaye</a>
+        <a class="jMyles" href="http://twitter.com/jMylesHolmes">@jMyles</a>
+        <a class="cKaye" href="http://twitter.com/ckaye89">@cKaye</a>
     </span>
 </div>
 
