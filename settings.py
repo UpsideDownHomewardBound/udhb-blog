@@ -377,4 +377,9 @@ except ImportError:
 else:
     set_dynamic_settings(globals())
 
+try:
+    from db_settings import *
+except ImportError:
+    pass
+
 WSGI_APPLICATION = 'wsgi.application'
