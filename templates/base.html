@@ -200,17 +200,20 @@
 <div class="row">
 <p class="site-info text-center">
     {% trans "Powered by" %}
-    <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
-    <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
-    {% trans "and" %}
+    <a href="http://mezzanine.jupo.org">Mezzanine</a>
+    {% trans "," %}
     <a href="http://www.djangoproject.com">Django</a>
-    <span class="separator">|</span>
-    {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>
+    {% trans "and" %}
+    <a href="https://github.com/hangarunderground/hendrix">Hendrix</a>
     {% ifinstalled mezzanine.mobile %}
     <span class="separator">|</span>
     <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
     {% endifinstalled %}
+    <br>
+    {% trans "Banner photograph by" %}
+    <a href="https://www.flickr.com/photos/jaaaarel/">Taavi</a>
 </p>
+
 </div>
 </div>
 </footer>

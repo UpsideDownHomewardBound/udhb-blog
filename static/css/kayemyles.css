@@ -134,6 +134,7 @@ a {
   position: static;
   top: 30px;
   width: 1140px;
+  padding-top: 10px;
 }
 #top-content-container {
   margin-top: 0px;
@@ -157,6 +158,10 @@ a {
 }
 #top-content-container.top-container-offset {
   margin-top: 400px;
+}
+.form-actions {
+  background-color: #c4b6ed;
+  border-top: 0px;
 }
 footer {
   background-color: #c4b6ed;
