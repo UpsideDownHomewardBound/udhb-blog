@@ -4,3 +4,4 @@
 .project
 .pydev*
 db_settings.py
+secrets.py
