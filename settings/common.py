@@ -1,110 +1,24 @@
 from __future__ import absolute_import, unicode_literals
 
-######################
-# MEZZANINE SETTINGS #
-######################
 
-# The following settings are already defined with default values in
-# the ``defaults.py`` module within each of Mezzanine's apps, but are
-# common enough to be put here, commented out, for convenient
-# overriding. Please consult the settings documentation for a full list
-# of settings Mezzanine implements:
-# http://mezzanine.jupo.org/docs/configuration.html#default-settings
-
-# Controls the ordering and grouping of the admin menu.
-#
-# ADMIN_MENU_ORDER = (
-#     ("Content", ("pages.Page", "blog.BlogPost",
-#        "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
-#     ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
-#     ("Users", ("auth.User", "auth.Group",)),
-# )
-
-# A three item sequence, each containing a sequence of template tags
-# used to render the admin dashboard.
-#
-# DASHBOARD_TAGS = (
-#     ("blog_tags.quick_blog", "mezzanine_tags.app_list"),
-#     ("comment_tags.recent_comments",),
-#     ("mezzanine_tags.recent_actions",),
-# )
-
-# A sequence of templates used by the ``page_menu`` template tag. Each
-# item in the sequence is a three item sequence, containing a unique ID
-# for the template, a label for the template, and the template path.
-# These templates are then available for selection when editing which
-# menus a page should appear in. Note that if a menu template is used
-# that doesn't appear in this setting, all pages will appear in it.
-
-# PAGE_MENU_TEMPLATES = (
-#     (1, "Top navigation bar", "pages/menus/dropdown.html"),
-#     (2, "Left-hand tree", "pages/menus/tree.html"),
-#     (3, "Footer", "pages/menus/footer.html"),
-# )
-
-# A sequence of fields that will be injected into Mezzanine's (or any
-# library's) models. Each item in the sequence is a four item sequence.
-# The first two items are the dotted path to the model and its field
-# name to be added, and the dotted path to the field class to use for
-# the field. The third and fourth items are a sequence of positional
-# args and a dictionary of keyword args, to use when creating the
-# field instance. When specifying the field class, the path
-# ``django.models.db.`` can be omitted for regular Django model fields.
-#
-# EXTRA_MODEL_FIELDS = (
-#     (
-#         # Dotted path to field.
-#         "mezzanine.blog.models.BlogPost.image",
-#         # Dotted path to field class.
-#         "somelib.fields.ImageField",
-#         # Positional args for field class.
-#         ("Image",),
-#         # Keyword args for field class.
-#         {"blank": True, "upload_to": "blog"},
-#     ),
-#     # Example of adding a field to *all* of Mezzanine's content types:
-#     (
-#         "mezzanine.pages.models.Page.another_field",
-#         "IntegerField", # 'django.db.models.' is implied if path is omitted.
-#         ("Another name",),
-#         {"blank": True, "default": 1},
-#     ),
-# )
-
-# Setting to turn on featured images for blog posts. Defaults to False.
-#
-# BLOG_USE_FEATURED_IMAGE = True
-
-# If True, the south application will be automatically added to the
-# INSTALLED_APPS setting.
 USE_SOUTH = True
-
 
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
 
-SECRET_KEY = "09asd*AS(djas9dj32d2330f)*JFWE)*J308j3f0)J*DASF)J*0j32adsfpojfpdPODSAf32wer)(WFE)("
-
 # People who get code error notifications.
 # In the format (('Full Name', 'email@example.com'),
 #                ('Full Name', 'anotheremail@example.com'))
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('jMyles', 'justin@justinholmes.com'),
+    ('cKaye', 'Chelseakaye89@gmail.com'),
 )
 MANAGERS = ADMINS
 
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+
 ALLOWED_HOSTS = []
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
 TIME_ZONE = None
 
 # If you set this to True, Django will use timezone-aware datetimes.
@@ -158,28 +72,6 @@ STATICFILES_FINDERS = (
 # The numeric mode to set newly-uploaded files to. The value should be
 # a mode you'd pass directly to os.chmod.
 FILE_UPLOAD_PERMISSIONS = 0o644
-
-
-#############
-# DATABASES #
-#############
-
-DATABASES = {
-    "default": {
-        # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
-        "ENGINE": "django.db.backends.",
-        # DB name or path to database file if using sqlite3.
-        "NAME": "",
-        # Not used with sqlite3.
-        "USER": "",
-        # Not used with sqlite3.
-        "PASSWORD": "",
-        # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "",
-        # Set to empty string for default. Not used with sqlite3.
-        "PORT": "",
-    }
-}
 
 
 #########
@@ -315,42 +207,6 @@ OPTIONAL_APPS = (
 
 DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
 
-###################
-# DEPLOY SETTINGS #
-###################
-
-# These settings are used by the default fabfile.py provided.
-# Check fabfile.py for defaults.
-
-# FABRIC = {
-#     "SSH_USER": "", # SSH username for host deploying to
-#     "HOSTS": ALLOWED_HOSTS[:1], # List of hosts to deploy to (eg, first host)
-#     "DOMAINS": ALLOWED_HOSTS, # Domains for public site
-#     "REPO_URL": "ssh://hg@bitbucket.org/user/project", # Project's repo URL
-#     "VIRTUALENV_HOME":  "", # Absolute remote path for virtualenvs
-#     "PROJECT_NAME": "", # Unique identifier for project
-#     "REQUIREMENTS_PATH": "requirements.txt", # Project's pip requirements
-#     "GUNICORN_PORT": 8000, # Port gunicorn will listen on
-#     "LOCALE": "en_US.UTF-8", # Should end with ".UTF-8"
-#     "DB_PASS": "", # Live database password
-#     "ADMIN_PASS": "", # Live admin user password
-#     "SECRET_KEY": SECRET_KEY,
-#     "NEVERCACHE_KEY": NEVERCACHE_KEY,
-# }
-
-
-##################
-# LOCAL SETTINGS #
-##################
-
-# Allow any settings to be defined in local_settings.py which should be
-# ignored in your version control system allowing for settings to be
-# defined per machine.
-try:
-    from local_settings import *
-except ImportError:
-    pass
-
 HENDRIX_CHILD_RESOURCES = (
     'static.StaticFilesResource',
 )
@@ -358,24 +214,6 @@ HENDRIX_CHILD_RESOURCES = (
 COMPRESS_PRECOMPILERS = (
    ('text/less', 'lessc {infile} {outfile}'),
 )
-
-
-####################
-# DYNAMIC SETTINGS #
-####################
-
-# set_dynamic_settings() will rewrite globals based on what has been
-# defined so far, in order to provide some better defaults where
-# applicable. We also allow this settings module to be imported
-# without Mezzanine installed, as the case may be when using the
-# fabfile, where setting the dynamic settings below isn't strictly
-# required.
-try:
-    from mezzanine.utils.conf import set_dynamic_settings
-except ImportError:
-    pass
-else:
-    set_dynamic_settings(globals())
 
 try:
     from db_settings import *
