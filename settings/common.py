@@ -1,5 +1,5 @@
 from __future__ import absolute_import, unicode_literals
-
+from settings.secrets import SECRET_KEY
 
 USE_SOUTH = True
 
