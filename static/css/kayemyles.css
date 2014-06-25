@@ -7,9 +7,7 @@
 body {
   padding-top: 0;
   font-family: Tahoma;
-}
-.banner {
-  position: relative;
+  background-color: #16034b;
 }
 h2,
 h3,
@@ -59,16 +57,16 @@ a {
   color: #9d0a9d;
 }
 #page-wrapper {
-  position: relative;
-  margin-top: 656px;
   background-color: #c4b6ed;
   z-index: 150;
 }
 .navbar-default {
-  position: static;
+  position: fixed;
+  top: 0;
   margin-bottom: 0;
   background-image: linear-gradient(to bottom, #9d0a9d 0%, #16034b 100%);
   background-repeat: repeat-x;
+  border: none;
 }
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav > li > a,
@@ -112,21 +110,13 @@ a {
 .tree li > a:hover {
   background-color: #ffe6e7;
 }
-.banner .acro-hover {
-  position: fixed;
-  z-index: 125;
+.banner {
+  text-align: center;
+  margin-top: 50px;
 }
-.banner #jMyles-hover {
-  height: 220px;
-  left: 490px;
-  top: 390px;
-  width: 500px;
-}
-.banner #cKaye-hover {
-  height: 220px;
-  left: 530px;
-  top: 140px;
-  width: 500px;
+.banner #banner-image {
+  height: 550px;
+  margin: auto;
 }
 #banner-title {
   font-family: coconutpoinnt;
@@ -135,11 +125,11 @@ a {
 .title-default {
   color: #FFFFFF;
   font-size: 7em;
-  bottom: 350px;
+  top: 60px;
   line-height: .9em;
   width: 600px;
   text-shadow: 4px 4px #470147;
-  position: relative;
+  position: fixed;
   height: 0;
 }
 .title-scrolled {
@@ -157,7 +147,6 @@ a {
 }
 .sticky-top {
   position: fixed;
-  width: 100%;
   left: 0;
   top: 0;
   z-index: 100;

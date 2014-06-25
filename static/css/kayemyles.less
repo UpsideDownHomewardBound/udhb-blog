@@ -16,14 +16,14 @@
         font-weight: normal;
         font-style: normal;
 
-    }
+}
 
 #gradient {
 
   .horizontal(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image:  linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
     background-repeat: repeat-x;
-  }
+}
 
   .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
     background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
@@ -36,11 +36,9 @@
 body {
   padding-top: 0;
   font-family: Tahoma;
+  background-color: @dark-blue;
 }
 
-.banner {
-  position:relative;
-}
 
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
   color: @holy-red;
@@ -75,17 +73,17 @@ a {
 }
 
 #page-wrapper {
-  position:relative;
-  margin-top: 656px;
   background-color: @light-blue;
   z-index:150;
 }
 
 
 .navbar-default {
-  position:static;
+  position:fixed;
+  top:0;
   margin-bottom:0;
   #gradient > .vertical(@the-purple, @dark-blue);
+  border:none;
 
   .navbar-brand, .navbar-nav > li > a, a {
     color: @light-blue;
@@ -137,23 +135,16 @@ a {
   }
 }
 
+
 .banner {
-  .acro-hover {
-    position: fixed;
-    z-index: 125;
+  text-align: center;
+  margin-top: 50px;
+
+  #banner-image {
+    height:550px;
+    margin: auto;
   }
-  #jMyles-hover {
-    height: 220px;
-    left: 490px;
-    top: 390px;
-    width: 500px;
-  }
-  #cKaye-hover {
-    height: 220px;
-    left: 530px;
-    top: 140px;
-    width: 500px;
-  }
+
 }
 
 #banner-title {
@@ -164,11 +155,11 @@ a {
 .title-default {
   color: #FFFFFF;
   font-size: 7em;
-  bottom:350px;
+  top:60px;
   line-height: .9em;
   width:600px;
   text-shadow: 4px 4px @dark-purple;
-  position: relative;
+  position: fixed;
   height:0;
 }
 
@@ -189,7 +180,6 @@ a {
 
 .sticky-top {
   position: fixed;
-  width: 100%;
   left: 0;
   top: 0;
   z-index: 100;
