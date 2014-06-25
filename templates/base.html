@@ -74,36 +74,17 @@
           }
           )
 
-    var stickyNavTop = $('.navbar').offset().top;
     var bannerHeight = $('#banner-image').height();
     $('#page-wrapper').css('marginTop', bannerHeight);
 
     var stickyNav = function(){
         var scrollTop = $(window).scrollTop();
 
-        if (scrollTop > stickyNavTop) {
-            var stickyTotalHeight = $('.navbar').height() + $('#banner-title').height();
-            console.log(stickyTotalHeight);
-            $('.navbar').addClass('sticky-top');
-            $('#banner-title').addClass('banner-sticky-top');
-            $('#page-wrapper').css('top', stickyTotalHeight);
-        } else {
-            $('.navbar').removeClass('sticky-top');
-            $('#banner-title').removeClass('banner-sticky-top');
-            $('#page-wrapper').css('top', 0);
-        }
-
-        if (scrollTop > 250  ) {
+        if (scrollTop > 550  ) {
           $('#banner-title').addClass('title-scrolled').removeClass('title-default');
         } else {
           $('#banner-title').addClass('title-default').removeClass('title-scrolled');
         }
-
-        if (scrollTop > 800 ) {
-          $('#banner-title').removeClass('banner-sticky-top');
-          $('#page-wrapper').css('top', $('.navbar').height());
-        }
-
     };
 
     stickyNav();
@@ -122,9 +103,7 @@
 {# KAYEMYLES MONKEY PATCH #}
 
 <div class="banner">
-  <img id="banner-image" class="sticky-top" src="{% static "img/ptbanner2.jpg" %}">
-  <div id="jMyles-hover" class="acro-hover" person="jMyles"></div>
-  <div id="cKaye-hover" class="acro-hover" person="cKaye"></div>
+  <img id="banner-image" src="{% static "img/ptbanner2.jpg" %}">
 </div>
 
 {# This is what wraps the rest of the page, after the image, so that it all scrolls up together over the image #}
