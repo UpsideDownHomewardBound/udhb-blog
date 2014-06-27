@@ -55,6 +55,8 @@
 {# KM TODO: Move this to our own js file #}
 <script type="text/javascript">
   $(document).ready(function() {
+  bannerSize();
+  textColor();
 
     $('#twitter-handles a').hover(
         function() {
@@ -64,33 +66,57 @@
         }
     );
 
-    $('.acro-hover').hover(
-        function() {
-          person = $(this).attr('person');
-          $('#twitter-handles .' + person).addClass('hover');
-          },function() {
-          person = $(this).attr('person');
-          $('#twitter-handles .' + person).removeClass('hover');
-          }
-          )
+    function bannerSize() {
+      var scrollTop = $(window).scrollTop();
+      scrollRemaining = 700 - scrollTop;
+      size = (scrollRemaining / 5) - 10;
+      if (size < 1) {
+        size = 0  // Some browsers don't like very small or negative font sizes.
+      }
+      $('#banner-title').css('font-size', size + "px");
+    }
 
-    var bannerHeight = $('#banner-image').height();
-    $('#page-wrapper').css('marginTop', bannerHeight);
+    function textColor() {
+      var scrollTop = $(window).scrollTop();
+      var totalHeight = document.body.scrollHeight;
 
-    var stickyNav = function(){
-        var scrollTop = $(window).scrollTop();
+      fractionGone = (scrollTop / totalHeight) * 100;
 
-        if (scrollTop > 550  ) {
-          $('#banner-title').addClass('title-scrolled').removeClass('title-default');
-        } else {
-          $('#banner-title').addClass('title-default').removeClass('title-scrolled');
-        }
-    };
+      colorReduce = parseInt(fractionGone * 2.5);
+      console.log(colorReduce)
 
-    stickyNav();
+      if (colorReduce < 1) {
+        colorReduce = 0;
+      } else if (colorReduce > 255) {
+        colorReduce = 255;
+      }
+
+      rgb = $('#page-wrapper').css('color')
+      rgb = rgb.substring(4, rgb.length-1)
+         .replace(/ /g, '')
+         .split(',');
+
+
+      [r, g, b] = rgb;
+
+      r = 255 - colorReduce;
+      g = 128 - colorReduce;
+      b = 0;
+
+      color_string = "rgb(" + r + "," + g + "," + b + ")";
+
+
+      console.log(color_string)
+
+
+
+      $('#page-wrapper').css('color', color_string);
+
+    }
 
     $(window).scroll(function() {
-        stickyNav();
+      bannerSize();
+      textColor();
     });
 });
 </script>
@@ -102,123 +128,104 @@
 
 {# KAYEMYLES MONKEY PATCH #}
 
+<div id="page-wrapper">
+
 <div class="banner">
   <img id="banner-image" src="{% static "img/ptbanner2.jpg" %}">
+  <h1 id="banner-title" class="title-default">{% block title %}{% endblock %}</h1>
 </div>
-
-{# This is what wraps the rest of the page, after the image, so that it all scrolls up together over the image #}
-
-<div style="position:relative;" id="page-wrapper">
-
-{# BLAAAAAAH END MONKEY PATCH #}
-
-
-
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-    {# KM #}
-    <p class="navbar-text">
-        <a href="/">
-            jMyles and cKaye's travel blog of <br/> passion, programming, and politics
-        </a>
-    </p>
-    <span id="twitter-handles">
-        <a class="jMyles" href="http://twitter.com/jMylesHolmes">@jMyles</a>
-        <a class="cKaye" href="http://twitter.com/ckaye89">@cKaye</a>
-    </span>
-</div>
-
-<div class="navbar-collapse collapse">
-    {% search_form "all" %}
-    {# {% page_menu "pages/menus/dropdown.html" %} #}
-</div>
-</div>
-</div>
-
-<div id="top-content-container" class="container">
-
-{# KM #}
-<h1 id="banner-title" class="title-default">{% block title %}{% endblock %}</h1>
 
 {% nevercache %}
 {% if messages %}
 <div class="messages">
-{% for message in messages %}
-<div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{ message }}
-</div>
-{% endfor %}
+    {% for message in messages %}
+        <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
 </div>
 {% endif %}
 {% endnevercache %}
 
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
-
-</div>
-
 <div class="container">
-<div class="row">
+    <div class="row">
 
-<div class="col-md-2 left">
-    {% block left_panel %}
-    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
-    {% endblock %}
-</div>
+        <div class="col-md-2 left">
+            {% block left_panel %}
+            <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
+            {% endblock %}
+        </div>
 
-<div class="col-md-7 middle">
-    {% block main %}{% endblock %}
-</div>
+        <div class="col-md-7 middle">
+            {% block main %}{% endblock %}
+        </div>
 
-<div class="col-md-3 right">
-    {% nevercache %}
-    {% include "includes/user_panel.html" %}
-    {% endnevercache %}
-    <div class="panel panel-default">
-    <div class="panel-body">
-    {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
-    {% endblock %}
+        <div class="col-md-3 right">
+            {% nevercache %}
+            {% include "includes/user_panel.html" %}
+            {% endnevercache %}
+            <div class="panel panel-default">
+            <div class="panel-body">
+            {% block right_panel %}
+            {% ifinstalled mezzanine.twitter %}
+            {% include "twitter/tweets.html" %}
+            {% endifinstalled %}
+            {% endblock %}
+            </div>
+            </div>
+        </div>
+
     </div>
-    </div>
-</div>
-
-</div>
 </div>
 
 <footer>
-<div class="container">
-{% page_menu "pages/menus/footer.html" %}
+    <div class="container">
+    {% page_menu "pages/menus/footer.html" %}
+        <div class="row">
+        <p class="site-info text-center">
+            {% trans "Powered by" %}
+            <a href="http://mezzanine.jupo.org">Mezzanine</a>
+            {% trans "," %}
+            <a href="http://www.djangoproject.com">Django</a>
+            {% trans "and" %}
+            <a href="https://github.com/hangarunderground/hendrix">Hendrix</a>
+            {% ifinstalled mezzanine.mobile %}
+            <span class="separator">|</span>
+            <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
+            {% endifinstalled %}
+            <br>
+            {% trans "Banner photograph by" %}
+            <a href="https://www.flickr.com/photos/jaaaarel/">Taavi</a>
+        </p>
 
-<div class="row">
-<p class="site-info text-center">
-    {% trans "Powered by" %}
-    <a href="http://mezzanine.jupo.org">Mezzanine</a>
-    {% trans "," %}
-    <a href="http://www.djangoproject.com">Django</a>
-    {% trans "and" %}
-    <a href="https://github.com/hangarunderground/hendrix">Hendrix</a>
-    {% ifinstalled mezzanine.mobile %}
-    <span class="separator">|</span>
-    <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
-    {% endifinstalled %}
-    <br>
-    {% trans "Banner photograph by" %}
-    <a href="https://www.flickr.com/photos/jaaaarel/">Taavi</a>
-</p>
-
-</div>
-</div>
+        </div>
+    </div>
 </footer>
 
-</div> {# Page wrapper #}
+</div> {# Page Wrapper #}
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            {# KM #}
+            <p class="navbar-text">
+                <a href="/">
+                    jMyles and cKaye's travel blog of <br/> passion, programming, and politics
+                </a>
+            </p>
+            <span id="twitter-handles">
+                <a class="jMyles" href="http://twitter.com/jMylesHolmes">@jMyles</a>
+                <a class="cKaye" href="http://twitter.com/ckaye89">@cKaye</a>
+            </span>
+
+            {% search_form %}
+
+            {# KM #}
+        </div>
+    </div>
+</div>
+
 
 {% include "includes/footer_scripts.html" %}
 
