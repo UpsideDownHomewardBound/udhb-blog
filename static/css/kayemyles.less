@@ -34,9 +34,24 @@
 
 
 body {
-  padding-top: 0;
+
+  color: @pale-pink;
+
+  #gradient > .vertical(@dark-purple, @light-blue);
+    padding-top: 0;
   font-family: Tahoma;
   background-color: @dark-blue;
+
+  .active {
+    color: @holy-red;
+    font-weight: bold;
+  }
+
+}
+
+#page-wrapper {
+  margin:auto;
+  width:1140px;
 }
 
 
@@ -52,46 +67,32 @@ a {
   background-color: @pale-pink;
 }
 
-.breadcrumb {
-  #gradient > .vertical(@the-purple, @dark-blue);
-
-  a {
-    color: white;
-  }
-
-  .active {
-    color: @holy-red;
-    font-weight: bold;
-  }
-
-}
-
 .post-meta {
   a {
     color: @the-purple;
   }
 }
 
-#page-wrapper {
-  background-color: @light-blue;
-  z-index:150;
-}
-
-
 .navbar-default {
+  background-image: none;
+  background-color:@dark-purple;
   position:fixed;
-  top:0;
+  bottom:0;
+  top: auto;
   margin-bottom:0;
-  #gradient > .vertical(@the-purple, @dark-blue);
   border:none;
+  box-shadow:none;
 
   .navbar-brand, .navbar-nav > li > a, a {
     color: @light-blue;
   }
 
   .navbar-nav > .active > a {
-    #gradient > .vertical(@pale-pink, @dark-blue);
     color: white;
+  }
+
+  .navbar-header {
+    width:100%;
   }
 
   .navbar-text {
@@ -114,6 +115,11 @@ a {
     a.hover {
       color:@pale-pink;
     }
+  }
+
+  .navbar-form {
+    float:right;
+    margin-right:10px;
   }
 }
 
@@ -138,41 +144,32 @@ a {
 
 .banner {
   text-align: center;
-  margin-top: 50px;
 
   #banner-image {
-    height:550px;
-    margin: auto;
+    opacity:0.7;
+    height:650px;
+  }
+
+  #banner-title {
+      font-family: coconutpoinnt;
+      color: #FFFFFF;
+      top:0px;
+      line-height: .9em;
+      text-shadow: 4px 4px @dark-purple;
+      position: fixed;
+      height:0;
+      text-align:center;
+      width: 1140px;
+      opacity: 0.7;
   }
 
 }
 
-#banner-title {
-   font-family: coconutpoinnt;
-   z-index:200;
+.left {
+  padding-left: 0;
 }
 
-.title-default {
-  color: #FFFFFF;
-  font-size: 7em;
-  top:60px;
-  line-height: .9em;
-  width:600px;
-  text-shadow: 4px 4px @dark-purple;
-  position: fixed;
-  height:0;
-}
 
-.title-scrolled {
-  color: @the-purple;
-    font-size: 5em;
-    line-height: 55px;
-    margin: 0;
-    position: static;
-    top: 30px;
-    width: 1140px;
-    padding-top: 10px;
-}
 
 #top-content-container {
   margin-top:0px;
@@ -206,6 +203,6 @@ a {
 }
 
 footer {
-  background-color: @light-blue;
+  background: none;
   border-top: @the-purple;
   }

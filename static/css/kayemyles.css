@@ -5,9 +5,20 @@
   font-style: normal;
 }
 body {
+  color: #ffe6e7;
+  background-image: linear-gradient(to bottom, #470147 0%, #c4b6ed 100%);
+  background-repeat: repeat-x;
   padding-top: 0;
   font-family: Tahoma;
   background-color: #16034b;
+}
+body .active {
+  color: #ed0f1a;
+  font-weight: bold;
+}
+#page-wrapper {
+  margin: auto;
+  width: 1140px;
 }
 h2,
 h3,
@@ -42,31 +53,18 @@ a {
 .form-group > textarea {
   background-color: #ffe6e7;
 }
-.breadcrumb {
-  background-image: linear-gradient(to bottom, #9d0a9d 0%, #16034b 100%);
-  background-repeat: repeat-x;
-}
-.breadcrumb a {
-  color: white;
-}
-.breadcrumb .active {
-  color: #ed0f1a;
-  font-weight: bold;
-}
 .post-meta a {
   color: #9d0a9d;
 }
-#page-wrapper {
-  background-color: #c4b6ed;
-  z-index: 150;
-}
 .navbar-default {
+  background-image: none;
+  background-color: #470147;
   position: fixed;
-  top: 0;
+  bottom: 0;
+  top: auto;
   margin-bottom: 0;
-  background-image: linear-gradient(to bottom, #9d0a9d 0%, #16034b 100%);
-  background-repeat: repeat-x;
   border: none;
+  box-shadow: none;
 }
 .navbar-default .navbar-brand,
 .navbar-default .navbar-nav > li > a,
@@ -74,9 +72,10 @@ a {
   color: #c4b6ed;
 }
 .navbar-default .navbar-nav > .active > a {
-  background-image: linear-gradient(to bottom, #ffe6e7 0%, #16034b 100%);
-  background-repeat: repeat-x;
   color: white;
+}
+.navbar-default .navbar-header {
+  width: 100%;
 }
 .navbar-default .navbar-text {
   font-size: 15px;
@@ -98,6 +97,10 @@ a {
 .navbar-default #twitter-handles a.hover {
   color: #ffe6e7;
 }
+.navbar-default .navbar-form {
+  float: right;
+  margin-right: 10px;
+}
 .panel {
   background-color: #c4b6ed;
   border-color: #913e42;
@@ -112,35 +115,25 @@ a {
 }
 .banner {
   text-align: center;
-  margin-top: 50px;
 }
 .banner #banner-image {
-  height: 550px;
-  margin: auto;
+  opacity: 0.7;
+  height: 650px;
 }
-#banner-title {
+.banner #banner-title {
   font-family: coconutpoinnt;
-  z-index: 200;
-}
-.title-default {
   color: #FFFFFF;
-  font-size: 7em;
-  top: 60px;
+  top: 0px;
   line-height: .9em;
-  width: 600px;
   text-shadow: 4px 4px #470147;
   position: fixed;
   height: 0;
-}
-.title-scrolled {
-  color: #9d0a9d;
-  font-size: 5em;
-  line-height: 55px;
-  margin: 0;
-  position: static;
-  top: 30px;
+  text-align: center;
   width: 1140px;
-  padding-top: 10px;
+  opacity: 0.7;
+}
+.left {
+  padding-left: 0;
 }
 #top-content-container {
   margin-top: 0px;
@@ -169,6 +162,6 @@ a {
   border-top: 0px;
 }
 footer {
-  background-color: #c4b6ed;
+  background: none;
   border-top: #9d0a9d;
 }
