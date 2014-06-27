@@ -80,37 +80,11 @@
       var scrollTop = $(window).scrollTop();
       var totalHeight = document.body.scrollHeight;
 
-      fractionGone = (scrollTop / totalHeight) * 100;
-
-      colorReduce = parseInt(fractionGone * 2.5);
-      console.log(colorReduce)
-
-      if (colorReduce < 1) {
-        colorReduce = 0;
-      } else if (colorReduce > 255) {
-        colorReduce = 255;
+      if (scrollTop < (totalHeight / 2) - 200) {
+        $('#page-wrapper').css('color', '#FCAC5B');
+      } else {
+        $('#page-wrapper').css('color', '#633200');
       }
-
-      rgb = $('#page-wrapper').css('color')
-      rgb = rgb.substring(4, rgb.length-1)
-         .replace(/ /g, '')
-         .split(',');
-
-
-      [r, g, b] = rgb;
-
-      r = 255 - colorReduce;
-      g = 128 - colorReduce;
-      b = 0;
-
-      color_string = "rgb(" + r + "," + g + "," + b + ")";
-
-
-      console.log(color_string)
-
-
-
-      $('#page-wrapper').css('color', color_string);
 
     }
 
