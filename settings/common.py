@@ -223,5 +223,3 @@ except ImportError:
     pass
 
 WSGI_APPLICATION = 'wsgi.application'
-
-BLOG_SLUG = "KayeMyles.com"
