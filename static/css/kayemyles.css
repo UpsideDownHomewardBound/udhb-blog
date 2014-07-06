@@ -32,6 +32,18 @@ h6,
 .h6 {
   color: #ed0f1a;
 }
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+.h2 a,
+.h3 a,
+.h4 a,
+.h5 a,
+.h6 a {
+  color: #428bca;
+}
 a {
   color: #16034b;
 }
