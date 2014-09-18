@@ -177,3 +177,7 @@ footer {
   background: none;
   border-top: #9d0a9d;
 }
+footer .site-info {
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
