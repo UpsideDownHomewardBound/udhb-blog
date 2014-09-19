@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+
+{% block meta_description %}{% metablock %}
+  {{ page.description }}
+{% endmetablock %}{% endblock %}
+
+
+{% block title %}
+  {% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+
+
+{% block main %}
+  <ul>
+    {% for place in places %}
+      <li>{{place.title}}</li>
+
+      {% if place.contains_places %}
+      <ul>
+        {% for subplace in place.contains.all %}
+          <li>{{subplace.title}}</li>
+        {% endfor %}  
+      </ul>
+      {% endif %}
+
+    {% endfor %}
+  </ul>
+{% endblock %}
