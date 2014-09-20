@@ -86,6 +86,16 @@
         $('#page-wrapper').css('color', '#4F2800');
       }
 
+      if (scrollTop < (totalHeight / 2) - 200) {
+        $('a').css('color', '#C7BFBF');
+      } else {
+        $('a').css('color', '#384040');
+      }
+      if (scrollTop < (totalHeight / 2) - 200) {
+        $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#C7BFBF');
+      } else {
+        $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#384040');
+      }
     }
 
     $(window).scroll(function() {

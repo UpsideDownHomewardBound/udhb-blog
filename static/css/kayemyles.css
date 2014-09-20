@@ -114,16 +114,14 @@ a {
   margin-right: 10px;
 }
 .panel {
-  background-color: #c4b6ed;
-  border-color: #913e42;
-  border-style: groove;
-  border-width: 2px;
+  background: transparent;
+  border-width: 0px;
 }
 .tree .active > a {
-  background-color: #ed0f1a;
+  background: transparent;
 }
 .tree li > a:hover {
-  background-color: #ffe6e7;
+  background: transparent;
 }
 .banner {
   text-align: center;
