@@ -1,5 +1,4 @@
-from settings.secrets import DATABASE_PASSWORD
-
+from settings.secrets import *
 from common import *
 
 DEBUG = True
