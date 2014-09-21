@@ -2,3 +2,5 @@ mezzanine
 django
 -e git+https://github.com/jMyles/hendrix#egg=hendrix
 psycopg2
+ipython
+django-pygments
