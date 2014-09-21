@@ -18,7 +18,10 @@ body .active {
 }
 #page-wrapper {
   margin: auto;
+  text-shadow: 0.3px 0.3px black;
+  transition: color 0.8s ease 0s;
   width: 1140px;
+  color: #FCAC5B;
 }
 h2,
 h3,

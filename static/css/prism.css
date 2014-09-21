@@ -4,6 +4,7 @@ pre {
 
 .highlight span {
 	transition: color 4s;
+	text-shadow: .3px .3px grey;
 }
 
 .highlight .hll.animate { background-color: #333333 }
