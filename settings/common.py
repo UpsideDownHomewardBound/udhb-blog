@@ -224,3 +224,17 @@ except ImportError:
     pass
 
 WSGI_APPLICATION = 'wsgi.application'
+
+EXTRA_MODEL_FIELDS = (
+    # Four-item sequence for one field injected.
+    (
+        # Dotted path to field.
+        "mezzanine.blog.models.BlogPost.banner_image",
+        # Dotted path to field class.
+        "django.db.models.OneToOneField",
+        # Positional args for field class.
+        ("blogging.BannerImage",),
+        # Keyword args for field class.
+        {},
+    ),
+)

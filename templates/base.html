@@ -125,7 +125,13 @@
 <div id="page-wrapper">
 
 <div class="banner">
-  <img id="banner-image" src="{% static "img/ptbanner2.jpg" %}">
+
+  {% if blog_post.banner_image %}
+    <img id="banner-image" src="/static/media/{{blog_post.banner_image.image}}">
+  {% else %}
+    <img id="banner-image" src="{% static "img/ptbanner2.jpg" %}">
+  {% endif %}
+
   <h1 id="banner-title" class="title-default">{% block title %}{% endblock %}</h1>
 </div>
 
