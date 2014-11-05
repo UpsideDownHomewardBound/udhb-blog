@@ -1,8 +1,8 @@
 from settings.secrets import *
 from common import *
 
-DEBUG = True
-DEV_SERVER = True
+DEBUG = False
+DEV_SERVER = False
 
 DATABASES = {
     "default": {
