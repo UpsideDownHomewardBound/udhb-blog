@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blogging', '0003_theme_field'),
+        ('blogging', '0002_theme'),
         ('blog', '0001_initial'),
     ]
 
