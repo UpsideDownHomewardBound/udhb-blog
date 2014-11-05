@@ -232,3 +232,7 @@ EXTRA_MODEL_FIELDS = (
         {'null':True, 'blank':True},
     ),
 )
+
+MIGRATION_MODULES = {
+    'pages': 'apps.pages_migrations',
+}
