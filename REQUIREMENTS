@@ -1,4 +1,4 @@
-mezzanine
+-e git+https://github.com/slashRoot/mezzanine#egg=mezzanine
 django
 -e git+https://github.com/jMyles/hendrix#egg=hendrix
 psycopg2
