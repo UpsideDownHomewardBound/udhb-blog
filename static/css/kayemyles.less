@@ -19,6 +19,14 @@
 
 }
 
+@font-face {
+        font-family: 'Merula';
+        src: url('/static/fonts/Merula Regular.otf') format("opentype");
+        font-weight: normal;
+        font-style: normal;
+
+}
+
 #gradient {
 
   .horizontal(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
@@ -40,7 +48,7 @@ body {
 
   #gradient > .vertical(@dark-purple, @light-blue);
     padding-top: 0;
-  font-family: Tahoma;
+  font-family: Merula;
   background-color: @dark-blue;
 
   .active {
@@ -57,6 +65,7 @@ body {
 
 
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
+  font-family: Merula;
   color: @holy-red;
   a {
     color: @darkerish-blue;
@@ -75,6 +84,11 @@ a {
   a {
     color: @the-purple;
   }
+}
+
+.entry-content {
+  font-family: sans;
+  font-size: 14px;
 }
 
 .navbar-default {

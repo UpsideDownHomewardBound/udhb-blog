@@ -4,12 +4,18 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Merula';
+  src: url('/static/fonts/Merula Regular.otf') format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   color: #ffe6e7;
   background-image: linear-gradient(to bottom, #470147 0%, #c4b6ed 100%);
   background-repeat: repeat-x;
   padding-top: 0;
-  font-family: Tahoma;
+  font-family: Merula;
   background-color: #16034b;
 }
 body .active {
@@ -30,6 +36,7 @@ h6,
 .h4,
 .h5,
 .h6 {
+  font-family: Merula;
   color: #ed0f1a;
 }
 h2 a,
@@ -67,6 +74,10 @@ a {
 }
 .post-meta a {
   color: #9d0a9d;
+}
+.entry-content {
+  font-family: sans;
+  font-size: 14px;
 }
 .navbar-default {
   background-image: none;
