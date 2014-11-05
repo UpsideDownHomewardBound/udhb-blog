@@ -231,8 +231,15 @@ EXTRA_MODEL_FIELDS = (
         ("blogging.Theme",),
         {'null':True, 'blank':True},
     ),
+    (
+        "mezzanine.blog.models.BlogPost.theme",
+        "ForeignKey",
+        ("blogging.Theme",),
+        {'null':True, 'blank':True},
+    ),
 )
 
 MIGRATION_MODULES = {
     'pages': 'apps.pages_migrations',
+    'blog': 'apps.mezzanine_blog_migrations',
 }
