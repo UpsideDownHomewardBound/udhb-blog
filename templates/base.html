@@ -115,6 +115,16 @@ function slowDecorate() {
         $('#page-wrapper').css('color', '#4F2800').css('text-shadow', '0.3px 0.3px grey');
       }
 
+      if (scrollTop < (totalHeight / 2) - 200) {
+        $('a').css('color', '#C7BFBF');
+      } else {
+        $('a').css('color', '#384040');
+      }
+      if (scrollTop < (totalHeight / 2) - 200) {
+        $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#C7BFBF');
+      } else {
+        $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#384040');
+      }
     }
 
     $(window).scroll(function() {
