@@ -7,14 +7,14 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0001_initial'),
+        ('blogging', '0003_auto_20141104_1822'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='blogpost',
-            name='theme',
-            field=models.ForeignKey(blank=True, to='blogging.Theme', null=True),
-            preserve_default=True,
+            model_name='theme',
+            name='font_size',
+            field=models.IntegerField(default=700),
+            preserve_default=False,
         ),
     ]

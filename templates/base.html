@@ -55,6 +55,16 @@
 
 {# KM TODO: Move this to our own js file #}
 <script type="text/javascript">
+
+{% if page.theme %}
+heroFontSize = {{page.theme.font_size}}
+{% elif blog_post.theme %}
+heroFontSize = {{blog_post.theme.font_size}}
+{% else %}
+heroFontSize = 700
+{% endif %}
+
+
 function slowDecorate() {
     var timeout = 400,
     time_per_block = 550;
@@ -85,9 +95,9 @@ function slowDecorate() {
         }
     );
 
-    function bannerSize() {
+    function bannerSize(startingSize) {
       var scrollTop = $(window).scrollTop();
-      scrollRemaining = 700 - scrollTop;
+      scrollRemaining = startingSize - scrollTop;
       size = (scrollRemaining / 5) - 10;
       if (size < 1) {
         size = 0  // Some browsers don't like very small or negative font sizes.
@@ -105,23 +115,13 @@ function slowDecorate() {
         $('#page-wrapper').css('color', '#4F2800').css('text-shadow', '0.3px 0.3px grey');
       }
 
-      if (scrollTop < (totalHeight / 2) - 200) {
-        $('a').css('color', '#C7BFBF');
-      } else {
-        $('a').css('color', '#384040');
-      }
-      if (scrollTop < (totalHeight / 2) - 200) {
-        $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#C7BFBF');
-      } else {
-        $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#384040');
-      }
     }
 
     $(window).scroll(function() {
-      bannerSize();
+      bannerSize(heroFontSize);
       textColor();
     });
-
+  bannerSize(heroFontSize);
   slowDecorate();
 
 });
@@ -142,7 +142,10 @@ function slowDecorate() {
 
   {% if page.theme %}
     <img id="banner-image" src="/static/media/{{page.theme.banner_image}}">
-    <h1 id="banner-title" style="color: #{{page.theme.font_color}}; font-family: 'Ubuntu Mono';'" class="title-default {{page.theme}}">
+    <h1 id="banner-title" style="{{page.theme.heading_style}}" class="title-default {{page.theme}}">
+  {% elif blog_post.theme %}
+    <img id="banner-image" src="/static/media/{{blog_post.theme.banner_image}}">
+    <h1 id="banner-title" style="{{blog_post.theme.heading_style}}" class="title-default {{blog_post.theme}}">
   {% else %}
     <img id="banner-image" src="{% static "img/ptbanner2.jpg" %}">
     <h1 id="banner-title" class="title-default">
