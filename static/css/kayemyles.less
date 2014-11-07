@@ -40,7 +40,7 @@
     background-repeat: repeat-x;
 }
 
-  .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 100%) {
+  .vertical(@start-color: #555; @end-color: #333; @start-percent: 0%; @end-percent: 80%) {
     background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10
     background-repeat: repeat-x;
   }
@@ -73,6 +73,32 @@ body {
 }
 
 
+
+.middle {
+
+  blockquote {
+    background-color: brown;
+    color: white;
+  }
+
+  p, ol, ul, li {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+
+  .aside {
+    background-color: #470147;
+    color: white;
+    line-height: 16px;
+    margin-left: 20px;
+    padding: 11px;
+  }
+
+  .highlight pre {
+    font-family: Merula;
+  }
+
+}
+
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
   font-family: Merula;
   color: @holy-red;
@@ -95,11 +121,6 @@ a {
   }
 }
 
-p {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-size: 14px;
-}
-
 .navbar-default {
   background-image: none;
   background-color:@dark-purple;
@@ -110,12 +131,12 @@ p {
   border:none;
   box-shadow:none;
 
-  .navbar-brand, .navbar-nav > li > a, a {
-    color: @light-blue;
-  }
-
   .navbar-nav > .active > a {
     color: white;
+  }
+
+  a {
+    color: #C7BFBF;
   }
 
   .navbar-header {
@@ -134,7 +155,6 @@ p {
     margin-top:10px;
 
     a {
-      color:@crazy-blue;
       font-size:1.3em;
       text-shadow: 1px 3px 9px @pale-pink;
       margin-left:10px;

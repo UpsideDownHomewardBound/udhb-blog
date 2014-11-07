@@ -18,7 +18,7 @@
 }
 body {
   color: #ffe6e7;
-  background-image: linear-gradient(to bottom, #470147 0%, #c4b6ed 100%);
+  background-image: linear-gradient(to bottom, #470147 0%, #c4b6ed 80%);
   background-repeat: repeat-x;
   padding-top: 0;
   font-family: Merula;
@@ -34,6 +34,26 @@ body .active {
   transition: color 0.8s ease 0s;
   width: 1140px;
   color: #FCAC5B;
+}
+.middle blockquote {
+  background-color: brown;
+  color: white;
+}
+.middle p,
+.middle ol,
+.middle ul,
+.middle li {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.middle .aside {
+  background-color: #470147;
+  color: white;
+  line-height: 16px;
+  margin-left: 20px;
+  padding: 11px;
+}
+.middle .highlight pre {
+  font-family: Merula;
 }
 h2,
 h3,
@@ -84,10 +104,6 @@ a {
 .post-meta a {
   color: #9d0a9d;
 }
-p {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-}
 .navbar-default {
   background-image: none;
   background-color: #470147;
@@ -98,13 +114,11 @@ p {
   border: none;
   box-shadow: none;
 }
-.navbar-default .navbar-brand,
-.navbar-default .navbar-nav > li > a,
-.navbar-default a {
-  color: #c4b6ed;
-}
 .navbar-default .navbar-nav > .active > a {
   color: white;
+}
+.navbar-default a {
+  color: #C7BFBF;
 }
 .navbar-default .navbar-header {
   width: 100%;
@@ -121,7 +135,6 @@ p {
   margin-top: 10px;
 }
 .navbar-default #twitter-handles a {
-  color: #401ca5;
   font-size: 1.3em;
   text-shadow: 1px 3px 9px #ffe6e7;
   margin-left: 10px;

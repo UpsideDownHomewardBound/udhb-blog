@@ -110,20 +110,20 @@ function slowDecorate() {
       var totalHeight = document.body.scrollHeight;
 
       if (scrollTop < (totalHeight / 2) - 200) {
-        $('#page-wrapper').css('color', '#FCAC5B').css('text-shadow', '0.3px 0.3px black');
+        $('#page-wrapper').css('color', '#FCAC5B').css('text-shadow', '1px 1px 1px black');
       } else {
-        $('#page-wrapper').css('color', '#4F2800').css('text-shadow', '0.3px 0.3px grey');
+        $('#page-wrapper').css('color', '#4F2800').css('text-shadow', '0px 0px 1px #86969C');
       }
 
       if (scrollTop < (totalHeight / 2) - 200) {
-        $('a').css('color', '#C7BFBF');
+        $('#page-wrapper a').css('color', '#C7BFBF');
       } else {
-        $('a').css('color', '#384040');
+        $('#page-wrapper a').css('color', '#6166FF');
       }
       if (scrollTop < (totalHeight / 2) - 200) {
         $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#C7BFBF');
       } else {
-        $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#384040');
+        $('h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6').css('color', '#593E22');
       }
     }
 
