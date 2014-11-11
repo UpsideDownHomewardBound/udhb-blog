@@ -16,6 +16,10 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Postamt';
+  src: url('/static/fonts/Postamt.ttf') format('truetype');
+}
 body {
   color: #ffe6e7;
   background-image: linear-gradient(to bottom, #470147 0%, #c4b6ed 80%);
