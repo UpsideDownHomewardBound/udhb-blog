@@ -52,6 +52,9 @@ ul, ol {
 .tree .active > a {
   background-color: #EEEEEE;
 }
+.tree .active-branch > a {
+  font-weight: bold;
+}
 .breadcrumb > li + li:before {
   padding: 0 5px 0 10px;
 }
@@ -209,6 +212,9 @@ img.pull-left {
 }
 .tag-weight-4 {
   font-size: 180%;
+}
+.recent-posts img {
+    margin: 2px;
 }
 
 /*========================================

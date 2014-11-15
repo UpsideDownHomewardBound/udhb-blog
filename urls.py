@@ -6,6 +6,7 @@ from django.contrib import admin
 
 from mezzanine.core.views import direct_to_template
 
+import mezzanine_pagedown.urls
 
 admin.autodiscover()
 
@@ -36,7 +37,9 @@ urlpatterns += patterns('',
     # ``mezzanine.urls``, go right ahead and take the parts you want
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
+    ("^pagedown/", include(mezzanine_pagedown.urls)),
     ("^", include("mezzanine.urls")),
+
 
     # MOUNTING MEZZANINE UNDER A PREFIX
     # ---------------------------------

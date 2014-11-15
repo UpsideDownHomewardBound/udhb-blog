@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'hendrix',
     'apps.blogging',
     'apps.places',
+    "mezzanine_pagedown",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
 )
@@ -240,6 +241,16 @@ EXTRA_MODEL_FIELDS = (
 )
 
 MIGRATION_MODULES = {
-    'pages': 'apps.pages_migrations',
+    'pages': 'apps.mezzanine_pages_migrations',
     'blog': 'apps.mezzanine_blog_migrations',
 }
+
+#####################
+# PAGEDOWN SETTINGS #
+#####################
+RICHTEXT_WIDGET_CLASS = 'mezzanine_pagedown.widgets.PageDownWidget'
+RICHTEXT_FILTER = 'mezzanine_pagedown.filters.custom'
+RICHTEXT_FILTERS = (RICHTEXT_FILTER,)
+PAGEDOWN_MARKDOWN_EXTENSIONS = ('extra','codehilite','toc')
+RICHTEXT_FILTER_LEVEL = 3
+PAGEDOWN_SERVER_SIDE_PREVIEW = True
