@@ -7,6 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('blogging', '0004_theme_font_size'),
         ('blog', '0001_initial'),
     ]
 

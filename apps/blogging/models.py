@@ -11,4 +11,4 @@ class Theme(models.Model):
     font_size = models.IntegerField()
 
     def __unicode__(self):
-      return self.name
+        return self.name
