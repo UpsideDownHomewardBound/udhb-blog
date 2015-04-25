@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('blogging', '0002_theme'),
-        ('pages', '0001_initial'),
+        ('pages', '0014_auto__add_field_page_created__add_field_page_updated'),
     ]
 
     operations = [
