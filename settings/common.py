@@ -17,7 +17,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 TIME_ZONE = None
 
@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'hendrix',
     'apps.blogging',
     'apps.places',
+    'apps.labor',
     "mezzanine_pagedown",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
@@ -243,6 +244,7 @@ EXTRA_MODEL_FIELDS = (
 MIGRATION_MODULES = {
     'pages': 'apps.mezzanine_pages_migrations',
     'blog': 'apps.mezzanine_blog_migrations',
+    # 'places': "myapp.migrations_not_used_in_tests",  # TODO: Make this test-only
 }
 
 #####################
