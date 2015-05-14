@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+
+{% block meta_description %}{% metablock %}
+  {{ page.description }}
+{% endmetablock %}{% endblock %}
+
+
+{% block title %}
+  {% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+
+
+{% block main %}
+  <table>
+      <tr>
+          <thead>Reported At</thead>
+          <thead>Message</thead>
+          <thead>Duration</thead>
+          <thead>Interval</thead>
+      </tr>
+
+    {% for announcement in announcements %}
+      <tr>
+          <td>{{announcement.reported_at}}</td>
+          <td>{{announcement.text}}</td>
+          {% if announcement.contraction_event %}
+            <td>{{announcement.duration}}</td>
+            <td>{{announcement.interval}}</td>
+
+          {% endif}
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
