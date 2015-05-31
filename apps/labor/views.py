@@ -21,6 +21,7 @@ class BirthCallBlast(CallBlast):
 
     phones = '+18106233203',
     clients = '1_justin_mobile',
+    inquiry_addendum = "This is the birth information line. Press any key to answer this call."
 
     def last_stop_before_vegas(self):
         conference = self.line.client.conferences.list(
@@ -91,7 +92,7 @@ class BirthLine(PhoneLine):
                 say(a.text)
 
 
-            # Every other announcement, remind them of the conference.
+               # Every other announcement, remind them of the conference.
             if (counter % 2) == 0:
                 say("At any time, you may press any key to be connected to the conference.", language="en", voice="man")
 
