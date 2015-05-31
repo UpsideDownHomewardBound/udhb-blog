@@ -1,7 +1,7 @@
 from settings.secrets import *
 from common import *
 
-DEBUG = False
+DEBUG = True
 DEV_SERVER = False
 
 DATABASES = {
@@ -15,6 +15,24 @@ DATABASES = {
     }
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': '/kayemyles/hendrix.log',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
 
 try:
     from mezzanine.utils.conf import set_dynamic_settings
