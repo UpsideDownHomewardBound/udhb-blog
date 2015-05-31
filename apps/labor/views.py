@@ -40,7 +40,7 @@ class BirthLine(PhoneLine):
 
     name = "birth_line"
     number_to_use_for_outgoing_calls = "+16468462229"
-    domain = "kayemyles.com:8555"
+    domain = "kayemyles.com"
 
     twilio_sid = TWILIO_SID
     twilio_auth = TWILIO_AUTH
@@ -57,29 +57,42 @@ class BirthLine(PhoneLine):
     language = "en-AU"
 
     def customize_disposition(self, gather):
-        say = functools.partial(gather.addSay, voice=self.voice, language=self.language)
-        say("Press any key to join the conference.", language="en-GB", voice="man")
 
+        say = functools.partial(gather.addSay, voice=self.voice, language=self.language)
+        say("Press any key to join the conference.", language="en", voice="man")
         say("Here are the latest details.")
 
-        most_recent_announcement = LaborAnnouncement.objects.latest()
-        most_recent_contraction_report = ContractionEvent.objects.latest()
+        # LaborAnnouncements
 
-        say("%s, the following was reported:" % naturaltime(most_recent_announcement.reported_at).replace(u'\xa0', u' '))
-        say(most_recent_announcement.text)
+        announcements = LaborAnnouncement.objects.order_by('-reported_at')
 
-        began = naturaltime(most_recent_contraction_report.began).replace(u'\xa0', u' ')
+        qualifiers = ['%s the following was reported:',
+                      'Before that, %s, this report:',
+                      'Going back further to %s, we have:',
+                      ]
 
-        say("Chelsea reported contractions %s minutes apart, each lasting %s seconds.  These began %s." % (most_recent_contraction_report.interval/60, most_recent_contraction_report.duration, began))
+        for counter, a in enumerate(announcements):
+            try:
+                q = qualifiers[counter]
+            except IndexError:
+                q = qualifiers[2]
 
-        if most_recent_announcement.contractionevent == most_recent_contraction_report:
-            next_la = LaborAnnouncement.objects.filter(contractionevent__isnull=True).latest()
-            say("Also, %s, the following was reported:" % naturaltime(next_la.reported_at).replace(u'\xa0', u' '))
-            say(next_la.text)
-        else:
-            say("These contractions were reported %s" % naturaltime(most_recent_contraction_report.reported_at).replace(u'\xa0', u' '))
-            if most_recent_contraction_report.text:
-                say("At this time, the following was also reported.")
-                say(most_recent_contraction_report.text)
+            say(q % naturaltime(a.reported_at).replace(u'\xa0', u' '))
 
-        say("Press any key to join the conference.", language="en-GB", voice="man")
+            try:
+                ce = a.contractionevent
+                began = naturaltime(ce.began).replace(u'\xa0', u' ')
+                say("Chelsea reported contractions %s minutes apart, each lasting %s seconds.  These began %s." % (ce.interval/60, ce.duration, began))
+                if ce.text:
+                    say("At this time, the following was also reported.")
+                    say(ce.text)
+
+            except LaborAnnouncement.DoesNotExist:
+                say(a.text)
+
+
+            # Every other announcement, remind them of the conference.
+            if (counter % 2) == 0:
+                say("At any time, you may press any key to be connected to the conference.", language="en", voice="man")
+
+        say("No further information is available.  Join the conference to talk to the birth team.")
