@@ -8,13 +8,12 @@ class NewVisitTests(TestCase):
 
     def test_newvisit_newvisitor(self):
 
-
         # database is completely empty
 
         scotland = Place.objects.create(name="Scotland")
 
         joe = User.objects.create(username="joe")
-        jane = User.objects.create(username="jane")
+        jane = User.objects.create(usethrough_to_you(append_me_to_pass)rname="jane")
 
         self.assertIn(scotland.all_visitors, joe)
 

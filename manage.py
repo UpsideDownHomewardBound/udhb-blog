@@ -3,7 +3,19 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 import sys
+import logging
 
+
+
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.INFO)
+formatter = logging.Formatter('%(message)s')
+ch.setFormatter(formatter)
+root.addHandler(ch)
+logger = logging.getLogger(__name__)
 
 # Corrects some pathing issues in various contexts, such as cron jobs,
 # and the project layout still being in Django 1.3 format.
