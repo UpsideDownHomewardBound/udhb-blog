@@ -1,4 +1,3 @@
-from settings.secrets import *
 from common import *
 
 DEBUG = False

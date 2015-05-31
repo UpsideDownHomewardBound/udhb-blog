@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
-# from settings.secrets import SECRET_KEY
+from settings.secrets import *
 import sys
+
 
 USE_SOUTH = True
 
