@@ -21,7 +21,7 @@ def all_announcements(request):
 
 class BirthCallBlast(CallBlast):
 
-    phones = '+18106233203',
+    phones = '+18106233203', '+18453923541'
     clients = '1_justin_mobile',
     inquiry_addendum = "This is the birth information line. Press any key to answer this call."
 
@@ -43,7 +43,7 @@ class BirthLine(PhoneLine):
 
     name = "birth_line"
     number_to_use_for_outgoing_calls = "+16468462229"
-    domain = "kayemyles.com"
+    domain = "kayemyles.com:8080"
 
     twilio_sid = TWILIO_SID
     twilio_auth = TWILIO_AUTH
