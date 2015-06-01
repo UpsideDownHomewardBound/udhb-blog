@@ -4,8 +4,9 @@ from hendrix.experience import crosstown_traffic
 from the_comm_app.plumbing import PhoneLine
 from the_comm_app.voice.features import CallBlast
 from twilio.rest.exceptions import TwilioRestException
-from apps.labor.models import LaborAnnouncement, ContractionEvent
+from apps.labor.models import LaborAnnouncement, ContractionEvent, PhoneNumberToInform
 from the_comm_app.voice.dispositions import ConferenceHoldingPattern, Voicemail
+from apps.people.models import PhoneNumber
 from settings.secrets import TWILIO_SID, TWILIO_AUTH
 
 
@@ -56,6 +57,16 @@ class BirthLine(PhoneLine):
 
     voice = "alice"
     language = "en-AU"
+
+    def pickup_phase(self):
+        caller_number = self.request.POST['From']
+        if len(caller_number) > 8:
+            caller_number_object = PhoneNumber.objects.get_or_create_from_twilio(caller_number, type=0)
+            PhoneNumberToInform.objects.get_or_create(phone_number=caller_number_object,
+                                                      defaults={'text_level': 0,
+                                                                'call_level': 0,
+                                                                })
+        return super(BirthLine, self).pickup_phase()
 
     def customize_disposition(self, gather):
 
