@@ -8,7 +8,8 @@ from apps.labor.models import LaborAnnouncement, ContractionEvent, PhoneNumberTo
 from the_comm_app.voice.dispositions import ConferenceHoldingPattern, Voicemail
 from apps.people.models import PhoneNumber
 from settings.secrets import TWILIO_SID, TWILIO_AUTH
-
+import logging
+logger = logging.getLogger(__name__)
 
 def all_announcements(request):
     announcements = LaborAnnouncement.objects.all()
@@ -60,7 +61,8 @@ class BirthLine(PhoneLine):
 
     def pickup_phase(self):
         caller_number = self.request.POST['From']
-        if len(caller_number) > 8:
+        logger.info("Call from %s" % caller_number)
+        if len(caller_number) > 9:
             caller_number_object = PhoneNumber.objects.get_or_create_from_twilio(caller_number, type=0)
             PhoneNumberToInform.objects.get_or_create(phone_number=caller_number_object,
                                                       defaults={'text_level': 0,
