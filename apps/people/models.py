@@ -30,7 +30,7 @@ class PhoneNumber(models.Model):
         (1, "work"),
         (2, "home"),
     )
-    number = models.IntegerField()
+    number = models.CharField(max_length=25)
     type = models.IntegerField(choices=PHONE_TYPES)
 
     def __unicode__(self):
