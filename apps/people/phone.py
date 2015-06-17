@@ -9,7 +9,7 @@ class MainCallBlast(ConferenceBlast):
 
     phones = '+18106233203',
     clients = '1_justin_mobile', '1_web_extn'
-    time_to_wait_for_answer = 5
+    time_to_wait_for_answer = 15
 
 
 class KayeMylesHoldingPattern(ConferenceHoldingPattern):
