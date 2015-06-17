@@ -10,6 +10,7 @@ from django.contrib import admin
 from mezzanine.core.views import direct_to_template
 
 import mezzanine_pagedown.urls
+from apps.people.phone import PrimaryPhoneLine
 
 admin.autodiscover()
 
@@ -31,6 +32,11 @@ urlpatterns += patterns('',
      url("^labor/birth_phone_line/(?P<phase_name>\w+)/$",
          csrf_exempt(BirthLine.as_view()),
          name=BirthLine.name
+         ),
+
+    url("^phone/primary_line/(?P<phase_name>\w+)/$",
+         csrf_exempt(PrimaryPhoneLine.as_view()),
+         name=PrimaryPhoneLine.name
          ),
 
     # MEZZANINE'S URLS

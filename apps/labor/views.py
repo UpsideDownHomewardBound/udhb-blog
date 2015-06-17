@@ -73,7 +73,6 @@ class BirthLine(PhoneLine):
     def customize_disposition(self, gather):
 
         say = functools.partial(gather.addSay, voice=self.voice, language=self.language)
-        say("Press any key to join the conference.", language="en", voice="man")
         say("Here are the latest details.")
 
         # LaborAnnouncements

@@ -13,11 +13,7 @@ class Friend(User):
 class PhoneNumberManager(models.Manager):
 
     def get_or_create_from_twilio(self, number, *args, **kwargs):
-        int_number = int(number)
-        try:
-            number_object = self.get(number=int_number)
-        except PhoneNumber.DoesNotExist:
-            number_object = self.create(number=int(number), *args, **kwargs)
+        number_object = PhoneNumber.objects.get_or_create_from_twilio(number=number, *args, **kwargs)
         return number_object
 
 
