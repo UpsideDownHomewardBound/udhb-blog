@@ -21,7 +21,7 @@ class PrimaryPhoneLine(PhoneLine):
 
     name = "primary_phone_line"
     number_to_use_for_outgoing_calls = "+16468462229"
-    domain = "kayemyles.com:5555"
+    domain = "kayemyles.com:8080"
 
     twilio_sid = TWILIO_SID
     twilio_auth = TWILIO_AUTH
