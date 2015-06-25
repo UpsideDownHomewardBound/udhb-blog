@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags staticfiles %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+
+{% block meta_description %}{% metablock %}
+  {{ page.description }}
+{% endmetablock %}{% endblock %}
+
+
+{% block title %}
+  {% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+
+
+{% block main %}
+
+<a href="{% static "img/ptbanner2.jpg" %}" class="swipebox" title="Prasarita Twist">
+<img class="thumb" src="{% static "img/ptbanner2.jpg" %}" alt="Justin & Chelsea flying at Pycon 2014">
+</a>
+
+<a href="{% static "img/robins.JPG" %}" class="swipebox" title="Robin Family">
+<img class="thumb" src="{% static "img/robins.JPG" %}" alt="Robin family next door">
+</a>
+
+{% endblock %}

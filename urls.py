@@ -24,6 +24,7 @@ urlpatterns += patterns('',
 
 
      url("^places/$", "apps.places.views.places", name="places"),
+     url("^gallery/$", "apps.gallery.views.gallery", name="gallery"),
      url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
 
     # MEZZANINE'S URLS

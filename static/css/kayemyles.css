@@ -22,25 +22,16 @@
 }
 body {
   color: #ffe6e7;
-  background-image: linear-gradient(to bottom, #470147 0%, #c4b6ed 80%);
-  background-repeat: repeat-x;
-  padding-top: 0;
   font-family: Merula;
-  background-color: #16034b;
+  font-color: #c4b6ed;
+  background-color: #470147;
 }
 body .active {
   color: #ed0f1a;
   font-weight: bold;
 }
-#page-wrapper {
-  margin: auto;
-  text-shadow: 0.3px 0.3px black;
-  transition: color 0.8s ease 0s;
-  width: 1140px;
-  color: #FCAC5B;
-}
 .middle blockquote {
-  background-color: brown;
+  background-color: #470147;
   color: white;
 }
 .middle p,
@@ -48,6 +39,7 @@ body .active {
 .middle ul,
 .middle li {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #FCAC5B;
 }
 .middle .aside {
   background-color: #470147;
@@ -82,10 +74,10 @@ h6 a,
 .h4 a,
 .h5 a,
 .h6 a {
-  color: #428bca;
+  color: C7BFBF;
 }
 a {
-  color: #16034b;
+  color: C7BFBF;
 }
 .form-group > input[type="text"],
 .form-group > input[type="password"],
@@ -159,6 +151,9 @@ a {
 }
 .tree li > a:hover {
   background: transparent;
+}
+.thumb {
+  width: 100px;
 }
 .banner {
   text-align: center;

@@ -55,11 +55,9 @@
 body {
 
   color: @pale-pink;
-
-  #gradient > .vertical(@dark-purple, @light-blue);
-    padding-top: 0;
   font-family: Merula;
-  background-color: @dark-blue;
+  font-color: @light-blue;
+  background-color: @dark-purple;
 
   .active {
     color: @holy-red;
@@ -68,25 +66,17 @@ body {
 
 }
 
-#page-wrapper {
-    margin: auto;
-    text-shadow: 0.3px 0.3px black;
-    transition: color 0.8s ease 0s;
-    width: 1140px;
-    color: #FCAC5B;
-}
-
-
 
 .middle {
 
   blockquote {
-    background-color: brown;
+    background-color: @dark-purple;
     color: white;
   }
 
   p, ol, ul, li {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #FCAC5B;
   }
 
   .aside {
@@ -107,12 +97,12 @@ h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
   font-family: Merula;
   color: @holy-red;
   a {
-    color: @darkerish-blue;
+    color: C7BFBF;
   }
 }
 
 a {
-  color: @dark-blue;
+  color: C7BFBF;
 }
 
 .form-group > input[type="text"], .form-group > input[type="password"], .form-group > input[type="datetime"], .form-group > input[type="datetime-local"], .form-group > input[type="date"], .form-group > input[type="month"], .form-group > input[type="time"], .form-group > input[type="week"], .form-group > input[type="number"], .form-group > input[type="email"], .form-group > input[type="url"], .form-group > input[type="search"], .form-group > input[type="tel"], .form-group > input[type="color"], .form-group > select, .form-group > textarea {
@@ -190,6 +180,9 @@ a {
   }
 }
 
+.thumb {
+  width: 100px;
+}
 
 .banner {
   text-align: center;
