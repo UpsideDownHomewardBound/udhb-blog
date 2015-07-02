@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
-from settings.secrets import SECRET_KEY
+from settings.secrets import *
+import sys
+
 
 USE_SOUTH = True
 
@@ -148,7 +150,9 @@ INSTALLED_APPS = (
     'apps.blogging',
     'apps.places',
     'apps.labor',
+    'apps.people',
     "mezzanine_pagedown",
+    "the_comm_app",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
 )
@@ -244,8 +248,14 @@ EXTRA_MODEL_FIELDS = (
 MIGRATION_MODULES = {
     'pages': 'apps.mezzanine_pages_migrations',
     'blog': 'apps.mezzanine_blog_migrations',
-    # 'places': "myapp.migrations_not_used_in_tests",  # TODO: Make this test-only
 }
+
+if 'test' in sys.argv:
+    cruft = "myapp.migrations_not_used_in_tests"
+
+    MIGRATION_MODULES['places'] = cruft
+    MIGRATION_MODULES['labor'] = cruft
+
 
 #####################
 # PAGEDOWN SETTINGS #

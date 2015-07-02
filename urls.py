@@ -1,4 +1,7 @@
 from __future__ import unicode_literals
+from django.views.decorators.csrf import csrf_exempt
+from apps.labor.views import BirthLine
+
 
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
@@ -7,6 +10,7 @@ from django.contrib import admin
 from mezzanine.core.views import direct_to_template
 
 import mezzanine_pagedown.urls
+from apps.people.phone import PrimaryPhoneLine
 
 admin.autodiscover()
 
@@ -26,6 +30,15 @@ urlpatterns += patterns('',
      url("^places/$", "apps.places.views.places", name="places"),
      url("^gallery/$", "apps.gallery.views.gallery", name="gallery"),
      url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
+     url("^labor/birth_phone_line/(?P<phase_name>\w+)/$",
+         csrf_exempt(BirthLine.as_view()),
+         name=BirthLine.name
+         ),
+
+    url("^phone/primary_line/(?P<phase_name>\w+)/$",
+         csrf_exempt(PrimaryPhoneLine.as_view()),
+         name=PrimaryPhoneLine.name
+         ),
 
     # MEZZANINE'S URLS
     # ----------------
