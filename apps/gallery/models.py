@@ -3,10 +3,11 @@ from django.db import models
 import pyrax
 import urllib
 import urlparse
+from settings.secrets import RACKSPACE_API_KEY
 
 pyrax.set_setting("identity_type", "rackspace")
 pyrax.set_default_region('IAD')
-pyrax.set_credentials('ckaye89', '89677988dd861a029ac2f914c35d02ad')
+pyrax.set_credentials('ckaye89', RACKSPACE_API_KEY)
 
 
 class Image(models.Model):
