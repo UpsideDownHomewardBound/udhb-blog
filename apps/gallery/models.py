@@ -44,7 +44,7 @@ class Album(models.Model):
         try:
             return self.container_obj
         except AttributeError:
-            pyrax.cloudfiles.create_container(self.name)
+            return pyrax.cloudfiles.create_container(self.slug)
 
     def save(self, *args, **kwargs):
         if not self.name:
@@ -58,7 +58,7 @@ class Album(models.Model):
 
 class ImagePlacementInAlbum(models.Model):
     image = models.ForeignKey(Image)
-    album = models.ForeignKey(Album)
+    album = models.ForeignKey(Album, related_name='placements')
     caption = models.CharField(max_length=200)
     order = models.IntegerField()
 

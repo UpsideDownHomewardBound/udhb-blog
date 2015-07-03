@@ -151,6 +151,7 @@ INSTALLED_APPS = (
     'apps.places',
     'apps.labor',
     'apps.people',
+    'apps.gallery',
     "mezzanine_pagedown",
     "the_comm_app",
     #"mezzanine.accounts",

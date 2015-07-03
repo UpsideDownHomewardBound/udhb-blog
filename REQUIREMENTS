@@ -5,7 +5,7 @@ psycopg2
 ipython
 django-pygments
 pyrax
-
+exifread
 
 -e git+git+ssh://git@github.com/SlashRoot/theCommApp@1ff158c7f8a9247fa523043776f570a523c54a13#egg=theCommApp-breaking-off-from-the-WHAT
 -e git+git+ssh://git@github.com/SlashRoot/hendrix@a82b293e96b7d03b1dd93640afb9de9f53ee069f#egg=hendrix-code-reorg

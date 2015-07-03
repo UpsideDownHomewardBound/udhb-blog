@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load mezzanine_tags keyword_tags staticfiles %}
+
+{% block meta_title %}{{ page.meta_title }}{% endblock %}
+
+
+{% block meta_description %}{% metablock %}
+  {{ page.description }}
+{% endmetablock %}{% endblock %}
+
+
+{% block title %}
+  {% editable page.title %}{{ page.title }}{% endeditable %}
+{% endblock %}
+
+
+{% block main %}
+
+{% for placement in album.placements.all %}
+    <a href="{{placement.image.show_url}}" class="swipebox" title="{{placement.image.name}}">
+        <img class="thumb" src="{{placement.image.thumb_url}}" alt="{{placement.caption}}">
+    </a>
+{% endfor %}
+
+{% endblock %}

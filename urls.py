@@ -29,6 +29,7 @@ urlpatterns += patterns('',
 
      url("^places/$", "apps.places.views.places", name="places"),
      url("^gallery/$", "apps.gallery.views.gallery", name="gallery"),
+     url("^gallery/(?P<album_slug>[-\w]+)/$", "apps.gallery.views.album_display", name="album_display"),
      url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
      url("^labor/birth_phone_line/(?P<phase_name>\w+)/$",
          csrf_exempt(BirthLine.as_view()),
