@@ -24,22 +24,28 @@ class ImageForm(ModelForm):
         model = Image
         fields = ['name']
 
+
 def edit_album(request, album_slug):
     album = Album.objects.get(slug=album_slug)
 
+    data = request.POST or None
 
-    if request.POST:
-        form_set = PlacementFormSet(request.POST, queryset=album.placements.all())
-    else:
-        form_set = PlacementFormSet(queryset=album.placements.all())
+    form_set = PlacementFormSet(data, queryset=album.placements.all())
+
+    valid = form_set.is_valid()
 
     for form in form_set:
-        form.image_form = ImageForm(request.POST,
+        form.image_form = ImageForm(data,
                                     instance=form.instance.image,
                                     prefix=form.instance.image.id)
 
-        if not form.is_valid():
-            print form
+        valid = valid and form.image_form.is_valid()
+
+    if valid:
+        form_set.save()
+
+        for form in form_set:
+            form.image_form.save()
 
 
     return render(request, "gallery-edit-album.html",

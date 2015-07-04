@@ -11,7 +11,7 @@ pyrax.set_credentials('ckaye89', RACKSPACE_API_KEY)
 
 
 class Image(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200, blank=True, null=True)
     filename = models.CharField(max_length=200)
     date = models.DateTimeField(blank=True, null=True)
 
