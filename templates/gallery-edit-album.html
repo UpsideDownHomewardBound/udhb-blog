@@ -21,10 +21,7 @@
             <td class="thumb"><img src="{{form.instance.image.thumb_url}}"/></td>
             <td>
                 <table>
-                    <tr>
-                        <td>Name:</td>
-                        <td>{{form.image_form.name}}</td>
-                    </tr>
+                    {{form.image_form.as_table}}
                     {{form.as_table}}
                 </table>
 
