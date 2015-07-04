@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 from django.views.decorators.csrf import csrf_exempt
-from apps.labor.views import BirthLine
-
 
 from django.conf.urls import patterns, include, url
 from django.conf.urls.i18n import i18n_patterns
@@ -10,6 +8,7 @@ from django.contrib import admin
 from mezzanine.core.views import direct_to_template
 
 import mezzanine_pagedown.urls
+from apps.labor.views import BirthLine
 from apps.people.phone import PrimaryPhoneLine
 
 admin.autodiscover()
@@ -26,10 +25,12 @@ urlpatterns = i18n_patterns("",
 
 urlpatterns += patterns('',
 
-
      url("^places/$", "apps.places.views.places", name="places"),
+
      url("^gallery/$", "apps.gallery.views.gallery", name="gallery"),
      url("^gallery/(?P<album_slug>[-\w]+)/$", "apps.gallery.views.album_display", name="album_display"),
+     url("^gallery/edit/(?P<album_slug>[-\w]+)/$", "apps.gallery.views.edit_album", name="edit_album"),
+
      url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
      url("^labor/birth_phone_line/(?P<phase_name>\w+)/$",
          csrf_exempt(BirthLine.as_view()),

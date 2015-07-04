@@ -59,7 +59,7 @@ class Album(models.Model):
 class ImagePlacementInAlbum(models.Model):
     image = models.ForeignKey(Image)
     album = models.ForeignKey(Album, related_name='placements')
-    caption = models.CharField(max_length=200)
+    caption = models.CharField(max_length=200, blank=True, null=True)
     order = models.IntegerField()
 
     class Meta:
