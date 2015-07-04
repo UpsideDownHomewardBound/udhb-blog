@@ -64,3 +64,4 @@ class ImagePlacementInAlbum(models.Model):
 
     class Meta:
         unique_together = ('image', 'album', 'order')
+        ordering = ['order']
