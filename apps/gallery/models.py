@@ -4,10 +4,14 @@ import pyrax
 import urllib
 import urlparse
 from settings.secrets import RACKSPACE_API_KEY
+import logging
+logger = logging.getLogger(__name__)
 
+logger.info("Connecting to Rackspace.")
 pyrax.set_setting("identity_type", "rackspace")
 pyrax.set_default_region('IAD')
 pyrax.set_credentials('ckaye89', RACKSPACE_API_KEY)
+logger.info("Finished connecting to Rackspace.")
 
 
 class Image(models.Model):
@@ -21,13 +25,20 @@ class Image(models.Model):
 
     def rack(self, size, file_path, container, format):
         with open(file_path) as f:
-            cdn_obj = container.store_object("%s-%s" % (self.filename, size), f)
-            cdn_obj.change_content_type("image/%s" % format)
+            full_name = "%s-%s" % (self.filename, size)
+            logger.info("Uploading %s" % full_name)
+            cdn_obj = container.store_object(
+                full_name,
+                f,
+                content_type="image/%s" % format,
+            )
+            logger.info("Done uploading %s" % full_name)
             encoded_name = urllib.quote(cdn_obj.name)
             setattr(self,
                     "%s_url" % size,
                     urlparse.urljoin(container.cdn_uri, encoded_name)
                     )
+            logger.info("Done racking %s, preparing to save." % full_name)
             self.save()
 
 
