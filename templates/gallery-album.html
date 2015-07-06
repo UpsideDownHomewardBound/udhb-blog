@@ -4,13 +4,13 @@
 {% block meta_title %}{{ page.meta_title }}{% endblock %}
 
 
-{% block meta_description %}{% metablock %}
+{% block meta_description %}/webcam-pictures/{% metablock %}
   {{ page.description }}
 {% endmetablock %}{% endblock %}
 
 
 {% block title %}
-  {% editable page.title %}{{ page.title }}{% endeditable %}
+  {% editable page.title %}{{ album.name }}{% endeditable %}
 {% endblock %}
 
 
