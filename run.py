@@ -1,6 +1,6 @@
 import time
 from hendrix.deploy.base import HendrixDeploy
-import logging, sys
+import logging, sys, os
 from twisted.application.service import Service
 from watchdog.events import FileSystemEventHandler, PatternMatchingEventHandler
 from watchdog.observers import Observer
@@ -67,6 +67,10 @@ class AlbumWatcherService(Service):
         observer = Observer()
         logging.info("About to start watching %s for changes." % GALLERY_ROOT)
         observer.schedule(BuildAlbums(), path=GALLERY_ROOT, recursive=True)
+
+        if not os.path.exists(GALLERY_ROOT):
+            raise SystemError("The Gallery Root, %s, does not exist.  Please create it." % GALLERY_ROOT)
+
         observer.start()
 
         self.running = 1
