@@ -60,6 +60,22 @@
 
 {% block extra_head %}{% endblock %}
 
+<script type="text/javascript">
+    {% if page.theme %}
+        heroFontSize = {{page.theme.font_size}}
+    {% elif blog_post.theme %}
+        heroFontSize = {{blog_post.theme.font_size}}
+    {% else %}
+        heroFontSize = 700
+    {% endif %}
+
+    {% if album %}
+        var album = true;
+    {% else %}
+        var album = false;
+    {% endif %}
+</script>
+
 <script src="{% static "js/bullshit.js" %}"></script>
 
 
@@ -81,7 +97,7 @@
     <img id="banner-image" src="/static/media/{{blog_post.theme.banner_image}}">
     <h1 id="banner-title" style="{{blog_post.theme.heading_style}}" class="title-default {{blog_post.theme}}">
   {% elif album %}
-    <h1 id="banner-title" class="title-default">
+    <h1 id="banner-title" class="album-title">
   {% else %}
     <img id="banner-image" src="{% static "img/ptbanner2.jpg" %}">
     <h1 id="banner-title" class="title-default">

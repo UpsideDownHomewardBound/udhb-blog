@@ -91,6 +91,11 @@ body {
     font-family: Merula;
   }
 
+  .gallery-album {
+    float:left;
+    background-color: #222;
+  }
+
 }
 
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
@@ -182,6 +187,7 @@ a {
 
 .thumb {
   width: 100px;
+  margin: 29px;
 }
 
 .banner {
@@ -198,13 +204,21 @@ a {
       top:0px;
       line-height: .9em;
       text-shadow: 4px 4px @dark-purple;
-      position: fixed;
-      height:0;
       text-align:center;
       width: 1140px;
       opacity: 0.7;
   }
 
+}
+
+.album-title {
+  position: static;
+  margin-top: -40px;
+}
+
+.title-default {
+  position: fixed;
+  height:0;
 }
 
 .left {
