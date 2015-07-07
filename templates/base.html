@@ -69,7 +69,7 @@
 {% block extra_head %}{% endblock %}
 
 {# KM TODO: Move this to our own js file #}
-<script type="text/javascript">
+<script tKayeMylesype="text/javascript">
 
 {% if page.theme %}
 heroFontSize = {{page.theme.font_size}}
@@ -171,6 +171,8 @@ function slowDecorate() {
   {% elif blog_post.theme %}
     <img id="banner-image" src="/static/media/{{blog_post.theme.banner_image}}">
     <h1 id="banner-title" style="{{blog_post.theme.heading_style}}" class="title-default {{blog_post.theme}}">
+  {% elif album %}
+    <h1 id="banner-title" class="title-default">
   {% else %}
     <img id="banner-image" src="{% static "img/ptbanner2.jpg" %}">
     <h1 id="banner-title" class="title-default">
