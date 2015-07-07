@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 
 import pyrax
@@ -17,7 +18,8 @@ logger.info("Finished connecting to Rackspace.")
 class Image(models.Model):
     name = models.CharField(max_length=200, blank=True, null=True)
     filename = models.CharField(max_length=200)
-    date = models.DateTimeField(blank=True, null=True)
+    datetime_taken = models.DateTimeField(blank=True, null=True)
+    datetime_uploaded = models.DateTimeField(default=datetime.now)
 
     full_url = models.CharField(max_length=200)
     show_url = models.CharField(max_length=200)

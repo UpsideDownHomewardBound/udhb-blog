@@ -16,11 +16,13 @@ formatter = logging.Formatter('%(message)s')
 ch.setFormatter(formatter)
 root.addHandler(ch)
 
+GATHER_DELAY = 3
+
 
 class AlbumWatcherService(Service):
 
     def startService(self):
-        from apps.gallery.inventory import gather_albums_and_images
+        from apps.gallery.inventory import gather_albums_and_images, GALLERY_ROOT
 
         class BuildAlbums(PatternMatchingEventHandler):
 
@@ -39,7 +41,7 @@ class AlbumWatcherService(Service):
                 try:
                     self.is_running = True
                     root.info("FOR REAL.  Gathering.")
-                    gather_albums_and_images('/gallery-store')
+                    gather_albums_and_images(GALLERY_ROOT)
                 finally:
                     root.info("Album builder ending; becoming available again.")
                     self.is_running = False
@@ -59,11 +61,12 @@ class AlbumWatcherService(Service):
                 else:
                     root.info("No call oustanding.")
 
-                root.info("Scheduling a call for 30 seconds from now.")
-                self.outstanding_call = reactor.callLater(30, self.think_about_gathering)
+                root.info("Scheduling a call for %s seconds from now." % GATHER_DELAY)
+                self.outstanding_call = reactor.callLater(GATHER_DELAY, self.think_about_gathering)
 
         observer = Observer()
-        observer.schedule(BuildAlbums(), path='/gallery-store/', recursive=True)
+        logging.info("About to start watching %s for changes." % GALLERY_ROOT)
+        observer.schedule(BuildAlbums(), path=GALLERY_ROOT, recursive=True)
         observer.start()
 
         self.running = 1

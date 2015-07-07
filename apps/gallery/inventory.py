@@ -4,10 +4,12 @@ from PIL import Image as PILImage
 import exifread
 from apps.gallery.models import Album, Image, ImagePlacementInAlbum
 import logging
+from django.conf import settings
+
 logger = logging.getLogger(__name__)
 
 
-GALLERY_ROOT = 'sample-gallery-dump'
+GALLERY_ROOT = '%s/gallery-holder' % settings.PROJECT_ROOT
 THUMBNAIL_WIDTH = 125
 
 
@@ -61,7 +63,7 @@ def gather_albums_and_images(gallery_dir):
 
                 image = Image.objects.create(
                     filename=filename,
-                    date=picture_taken_datetime,
+                    datetime_taken=picture_taken_datetime,
                 )
 
                 ImagePlacementInAlbum.objects.create(
