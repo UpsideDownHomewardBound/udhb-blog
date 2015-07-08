@@ -19,11 +19,14 @@ class Image(models.Model):
     show_url = models.CharField(max_length=200)
     thumb_url = models.CharField(max_length=200)
 
-    def clean(self):
-        if not self.full_url and self.show_url and self.thumb_url:
+    def save(self, *args, **kwargs):
+        if not (self.full_url and self.show_url and self.thumb_url):
             raise ValidationError('All urls must be provided for an Image object.')
+        else:
+            super(Image, self).save(*args, **kwargs)
 
     def rack(self, size, file_path, container, format):
+        logger.info("Racking %s, %s size, to %s" % (file_path, size, container))
         with open(file_path) as f:
             full_name = "%s-%s" % (self.filename, size)
             logger.info("Uploading %s" % full_name)
@@ -38,7 +41,7 @@ class Image(models.Model):
                     "%s_url" % size,
                     urlparse.urljoin(container.cdn_uri, encoded_name)
                     )
-            logger.info("Racked %s at %s size." % (full_name, size))
+            logger.info("Finished racking %s at %s size." % (full_name, size))
 
 
 class Album(models.Model):

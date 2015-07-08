@@ -70,7 +70,7 @@ def gather_albums_and_images(gallery_dir):
                         logger.info("Image has no 'taken at' datetime.")
                         picture_taken_datetime = None
 
-                image = Image.objects.create(
+                image = Image(
                     filename=filename,
                     datetime_taken=picture_taken_datetime,
                 )
@@ -100,6 +100,7 @@ def gather_albums_and_images(gallery_dir):
                 image.rack('thumb', thumb_full_path, container, im.format)
 
                 logger.info("Finished gathering %s.  Removing temp files." % filename)
+                image.save()
                 ImagePlacementInAlbum.objects.create(
                     image=image,
                     album=album,
