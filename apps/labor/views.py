@@ -1,9 +1,9 @@
 import functools
 from django.contrib.humanize.templatetags.humanize import naturaltime
+from django.views.generic.base import View
 from hendrix.experience import crosstown_traffic
 from the_comm_app.plumbing import PhoneLine
-from the_comm_app.voice.features import CallBlast
-from twilio.rest.exceptions import TwilioRestException
+from the_comm_app.voice.voice_features import CallBlast
 from apps.labor.models import LaborAnnouncement, ContractionEvent, PhoneNumberToInform
 from the_comm_app.voice.dispositions import ConferenceHoldingPattern, Voicemail
 from apps.people.models import PhoneNumber
@@ -39,7 +39,7 @@ class OurHoldingPattern(ConferenceHoldingPattern):
     hold_music = "http://kayemyles.com/static/chocobo.wav"
 
 
-class BirthLine(PhoneLine):
+class BirthLine(PhoneLine, View):
 
     name = "birth_line"
     number_to_use_for_outgoing_calls = "+16468462229"

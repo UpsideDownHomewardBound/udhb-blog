@@ -65,7 +65,7 @@ class AlbumWatcherService(Service):
                 self.outstanding_call = reactor.callLater(GATHER_DELAY, self.think_about_gathering)
 
         observer = Observer()
-        logging.info("About to start watching %s for changes." % GALLERY_ROOT)
+        logging.info("Watching %s for changes." % GALLERY_ROOT)
         observer.schedule(BuildAlbums(), path=GALLERY_ROOT, recursive=True)
 
         if not os.path.exists(GALLERY_ROOT):

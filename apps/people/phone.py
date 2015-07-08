@@ -1,6 +1,7 @@
+from django.views.generic.base import View
 from the_comm_app.plumbing import PhoneLine
 from the_comm_app.voice.dispositions import ConferenceHoldingPattern, Voicemail
-from the_comm_app.voice.features import CallBlast, ConferenceBlast
+from the_comm_app.voice.voice_features import CallBlast, ConferenceBlast
 from settings.secrets import TWILIO_SID, TWILIO_AUTH
 from hendrix.experience import crosstown_traffic
 
@@ -17,7 +18,7 @@ class KayeMylesHoldingPattern(ConferenceHoldingPattern):
     hold_music = "http://kayemyles.com/static/mmariachi.wav"
 
 
-class PrimaryPhoneLine(PhoneLine):
+class PrimaryPhoneLine(PhoneLine, View):
 
     name = "primary_phone_line"
     number_to_use_for_outgoing_calls = "+16468462229"
