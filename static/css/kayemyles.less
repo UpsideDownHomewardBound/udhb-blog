@@ -1,3 +1,5 @@
+@import "elements.less";
+
 @the-purple:            #9D0A9D;
 @dark-purple:           #470147;
 
@@ -93,7 +95,7 @@ body {
 
   .gallery-album {
     float:left;
-    background-color: #222;
+    .gradient(#222, #000, #333);
   }
 
 }
@@ -203,24 +205,26 @@ a {
       width: 1140px;
       font-family: coconutpoinnt;
       color: #FFF;
-      top: 0px;
-      left: 50%;
       line-height: 0.9em;
-      text-align: left;
       width: 1140px;
-      margin-left: -430px;
   }
 
 }
 
 .album-title {
   position: static;
-  margin-top: -40px;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .title-default {
   position: fixed;
+  top: 0px;
+  left: 50%;
   height:0;
+  margin-left: -430px;
+  text-align: left;
 }
 
 .left {

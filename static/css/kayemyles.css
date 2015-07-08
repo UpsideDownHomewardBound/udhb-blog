@@ -1,3 +1,9 @@
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
 @font-face {
   font-family: 'futurism';
   src: url('/static/fonts/ace_futurism.ttf');
@@ -54,7 +60,12 @@ body .active {
 }
 .middle .gallery-album {
   float: left;
-  background-color: #222;
+  background: #222222;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #000000), color-stop(1, #333333));
+  background: -ms-linear-gradient(bottom, #000000, #333333);
+  background: -moz-linear-gradient(center bottom, #000000 0%, #333333 100%);
+  background: -o-linear-gradient(#333333, #000000);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#000000', GradientType=0);
 }
 h2,
 h3,
@@ -172,20 +183,22 @@ a {
   text-shadow: 3px 3px #222;
   font-family: coconutpoinnt;
   color: #FFF;
-  top: 0px;
-  left: 50%;
   line-height: 0.9em;
-  text-align: left;
   width: 1140px;
-  margin-left: -430px;
 }
 .album-title {
   position: static;
-  margin-top: -40px;
+  margin: auto;
+  text-align: center;
+  margin-top: 20px;
 }
 .title-default {
   position: fixed;
+  top: 0px;
+  left: 50%;
   height: 0;
+  margin-left: -430px;
+  text-align: left;
 }
 .left {
   padding-left: 0;
