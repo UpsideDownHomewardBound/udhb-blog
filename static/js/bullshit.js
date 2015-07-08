@@ -51,7 +51,7 @@ function textColor() {
 
   $(document).ready(function() {
   bannerSize();
-  textColor();
+  // textColor();
 
     $('#twitter-handles a').hover(
         function() {
@@ -65,11 +65,10 @@ function textColor() {
       if (album != true) {
         bannerSize(heroFontSize);
       }
-
-      textColor();
+      // textColor();
     });
   bannerSize(heroFontSize);
-  slowDecorate();
+  // slowDecorate();
 
 });
 

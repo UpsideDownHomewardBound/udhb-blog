@@ -25,6 +25,7 @@ body {
   font-family: Merula;
   font-color: #c4b6ed;
   background-color: #470147;
+  padding-top: 0;
 }
 body .active {
   color: #ed0f1a;
@@ -164,18 +165,19 @@ a {
   text-align: center;
 }
 .banner #banner-image {
-  opacity: 0.7;
+  opacity: 0.9;
   height: 650px;
 }
 .banner #banner-title {
+  text-shadow: 3px 3px #222;
   font-family: coconutpoinnt;
-  color: #FFFFFF;
+  color: #FFF;
   top: 0px;
-  line-height: .9em;
-  text-shadow: 4px 4px #470147;
-  text-align: center;
+  left: 50%;
+  line-height: 0.9em;
+  text-align: left;
   width: 1140px;
-  opacity: 0.7;
+  margin-left: -430px;
 }
 .album-title {
   position: static;

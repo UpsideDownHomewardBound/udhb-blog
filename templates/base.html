@@ -66,7 +66,7 @@
     {% elif blog_post.theme %}
         heroFontSize = {{blog_post.theme.font_size}}
     {% else %}
-        heroFontSize = 700
+        heroFontSize = 600
     {% endif %}
 
     {% if album %}
@@ -99,7 +99,7 @@
   {% elif album %}
     <h1 id="banner-title" class="album-title">
   {% else %}
-    <img id="banner-image" src="{% static "img/ptbanner2.jpg" %}">
+    <img id="banner-image" src="{% static "img/porcupine-goodbye.jpg" %}">
     <h1 id="banner-title" class="title-default">
   {% endif %}
   {% block title %}{% endblock %}</h1>
@@ -182,7 +182,7 @@
             {# KM #}
             <p class="navbar-text">
                 <a href="/">
-                    jMyles and cKaye's travel blog of <br/> passion, programming, and politics
+                    Justin and Chelsea on a journey to find<br/> freedom, python, and antigravity
                 </a>
             </p>
             <span id="twitter-handles">
