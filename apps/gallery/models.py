@@ -1,18 +1,12 @@
 from datetime import datetime
+from django.core.exceptions import ValidationError
 from django.db import models
 
 import pyrax
 import urllib
 import urlparse
-from settings.secrets import RACKSPACE_API_KEY
 import logging
 logger = logging.getLogger(__name__)
-
-logger.info("Connecting to Rackspace.")
-pyrax.set_setting("identity_type", "rackspace")
-pyrax.set_default_region('IAD')
-pyrax.set_credentials('ckaye89', RACKSPACE_API_KEY)
-logger.info("Finished connecting to Rackspace.")
 
 
 class Image(models.Model):
@@ -24,6 +18,10 @@ class Image(models.Model):
     full_url = models.CharField(max_length=200)
     show_url = models.CharField(max_length=200)
     thumb_url = models.CharField(max_length=200)
+
+    def clean(self):
+        if not self.full_url and self.show_url and self.thumb_url:
+            raise ValidationError('All urls must be provided for an Image object.')
 
     def rack(self, size, file_path, container, format):
         with open(file_path) as f:
@@ -40,8 +38,7 @@ class Image(models.Model):
                     "%s_url" % size,
                     urlparse.urljoin(container.cdn_uri, encoded_name)
                     )
-            logger.info("Done racking %s, preparing to save." % full_name)
-            self.save()
+            logger.info("Racked %s at %s size." % (full_name, size))
 
 
 class Album(models.Model):

@@ -48,29 +48,28 @@ function textColor() {
   }
 }
 
-
   $(document).ready(function() {
-  bannerSize();
-  // textColor();
-
-    $('#twitter-handles a').hover(
-        function() {
-            $(this).addClass('hover');
-        }, function() {
-            $(this).removeClass('hover');
-        }
-    );
-
-    $(window).scroll(function() {
-      if (album != true) {
-        bannerSize(heroFontSize);
-      }
+      bannerSize();
       // textColor();
-    });
-  bannerSize(heroFontSize);
-  // slowDecorate();
 
-});
+        $('#twitter-handles a').hover(
+            function() {
+                $(this).addClass('hover');
+            }, function() {
+                $(this).removeClass('hover');
+            }
+        );
+
+        $(window).scroll(function() {
+          if (album != true) {
+            bannerSize(heroFontSize);
+          }
+          // textColor();
+        });
+      bannerSize(heroFontSize);
+      slowDecorate();
+
+  });
 
 //Swipebox
 

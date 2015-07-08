@@ -16,13 +16,12 @@ formatter = logging.Formatter('%(message)s')
 ch.setFormatter(formatter)
 root.addHandler(ch)
 
-GATHER_DELAY = 3
-
 
 class AlbumWatcherService(Service):
 
     def startService(self):
         from apps.gallery.inventory import gather_albums_and_images, GALLERY_ROOT
+        from django.conf import settings
 
         class BuildAlbums(PatternMatchingEventHandler):
 
@@ -61,8 +60,8 @@ class AlbumWatcherService(Service):
                 else:
                     root.info("No call oustanding.")
 
-                root.info("Scheduling a call for %s seconds from now." % GATHER_DELAY)
-                self.outstanding_call = reactor.callLater(GATHER_DELAY, self.think_about_gathering)
+                root.info("Scheduling a call for %s seconds from now." % settings.GALLERY_GATHER_DELAY)
+                self.outstanding_call = reactor.callLater(settings.GALLERY_GATHER_DELAY, self.think_about_gathering)
 
         observer = Observer()
         logging.info("Watching %s for changes." % GALLERY_ROOT)

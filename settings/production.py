@@ -3,6 +3,8 @@ from common import *
 DEBUG = True
 DEV_SERVER = False
 
+GALLERY_GATHER_DELAY = 45
+
 RAVEN_CONFIG = {
     'dsn': 'https://ba999676900348e896093777108be81a:fe3342e2b3aa499cb4a0ce52a5fb16bb@app.getsentry.com/44991',
 }

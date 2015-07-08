@@ -18,6 +18,14 @@ def gather_albums_and_images(gallery_dir):
     Walk through gallery_dir, record each subdirectory as an Album,
     with each file in it as an Image in that Album.
     '''
+    import pyrax
+    from settings.secrets import RACKSPACE_API_KEY
+    logger.info("Connecting to Rackspace.")
+    pyrax.set_setting("identity_type", "rackspace")
+    pyrax.set_default_region('IAD')
+    pyrax.set_credentials('ckaye89', RACKSPACE_API_KEY)
+    logger.info("Finished connecting to Rackspace.")
+
     for counter, (subdir, dirs, image_files) in enumerate(os.walk(gallery_dir)):
 
         # Ignore root directory; we only want subdirectories.
@@ -59,6 +67,7 @@ def gather_albums_and_images(gallery_dir):
 
                     else:
                         # We didn't glean an EXIF tag for the datetime, so None.
+                        logger.info("Image has no 'taken at' datetime.")
                         picture_taken_datetime = None
 
                 image = Image.objects.create(
@@ -66,12 +75,8 @@ def gather_albums_and_images(gallery_dir):
                     datetime_taken=picture_taken_datetime,
                 )
 
-                ImagePlacementInAlbum.objects.create(
-                    image=image,
-                    album=album,
-                    order=counter,
-                )
                 # Create gallery size and thumb-size files.
+                logger.info("Opening %s to resize." % full_path)
                 im = PILImage.open(full_path)
 
                 show_filename = os.path.splitext(filename)[0] + "-show"
@@ -79,6 +84,7 @@ def gather_albums_and_images(gallery_dir):
                 show = im.copy()
                 height = im.size[1] / ((im.size[0] / 1600) or 1)
                 show.thumbnail((1600, height), PILImage.ANTIALIAS)
+                logger.info("Saving show size at %s" % show_full_path)
                 show.save(show_full_path, "JPEG")
 
                 thumb_filename = os.path.splitext(filename)[0] + "-thumb"
@@ -86,6 +92,7 @@ def gather_albums_and_images(gallery_dir):
                 thumb = im.copy()
                 height = im.size[1] / ((im.size[0] / 1600) or 1)
                 thumb.thumbnail((150, height), PILImage.ANTIALIAS)
+                logger.info("Saving thumb size at %s" % thumb_full_path)
                 thumb.save(thumb_full_path, "JPEG")
 
                 image.rack('full', full_path, container, im.format)
@@ -93,6 +100,12 @@ def gather_albums_and_images(gallery_dir):
                 image.rack('thumb', thumb_full_path, container, im.format)
 
                 logger.info("Finished gathering %s.  Removing temp files." % filename)
+                ImagePlacementInAlbum.objects.create(
+                    image=image,
+                    album=album,
+                    order=counter,
+                )
+
                 os.remove(show_full_path)
                 os.remove(thumb_full_path)
 

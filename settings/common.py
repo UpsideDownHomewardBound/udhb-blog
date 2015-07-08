@@ -202,6 +202,18 @@ MIDDLEWARE_CLASSES = (
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+         "NAME": "dev.db",
+         "USER": "",
+         "PASSWORD": "",
+         "HOST": "",
+         "PORT": "",
+    }
+}
+
 #########################
 # OPTIONAL APPLICATIONS #
 #########################
