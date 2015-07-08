@@ -75,10 +75,7 @@ class AlbumWatcherService(Service):
 
         self.running = 1
 
-
-
-
-options = {'settings': 'settings.local', 'loud': True}
+options = {'settings': 'settings.ignore', 'loud': True}
 deployer = HendrixDeploy(options=options)
 deployer.services.append(('watchdog', AlbumWatcherService()))
 deployer.run()
