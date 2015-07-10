@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <style type="text/css">
     td.thumb {
     width: 150px;
@@ -12,9 +14,27 @@
     }
 </style>
 
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+    $(function(){
+        $('.sortable').sortable({
+            handle: "img",
+            stop: function () {
+                $('input.order_input').each(function(counter) {
+                    $(this).val((counter + 1) * 10);
+                });
+            },
+
+        }).disableSelection();
+    });
+</script>
+
     <form action="" method="POST">{% csrf_token %}
     {{ form_set.management_form }}
-    <table>
+    <table><tbody class="sortable">
     {% for form in form_set %}
         {{ form.non_field_errors }}
         <tr style="{% cycle 'background-color:#9D0A9D;' 'background-color: #C4B6ED;' as rowcolors %}, width:575px;">
@@ -29,6 +49,6 @@
         </tr>
 
     {% endfor %}
-    </table>
+    </tbody></table>
     <button>SAVE THESE PICTURES!  SAVE THEM!</button>
     </form>

@@ -35,6 +35,8 @@ def edit_album(request, album_slug):
     valid = form_set.is_valid()
 
     for form in form_set:
+        order_widget = form.fields['order'].widget
+        order_widget.attrs['class'] = "order_input"
         form.image_form = ImageForm(data,
                                     instance=form.instance.image,
                                     prefix=form.instance.image.id)
