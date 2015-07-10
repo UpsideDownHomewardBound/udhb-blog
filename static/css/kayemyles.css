@@ -29,12 +29,12 @@
 body {
   color: #ffe6e7;
   font-family: Merula;
-  font-color: #c4b6ed;
+  font-color: #80a2de;
   background-color: #470147;
   padding-top: 0;
 }
 body .active {
-  color: #ed0f1a;
+  color: #c7bfbf;
   font-weight: bold;
 }
 .middle blockquote {
@@ -46,7 +46,7 @@ body .active {
 .middle ul,
 .middle li {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #FCAC5B;
+  color: #fcac5b;
 }
 .middle .aside {
   background-color: #470147;
@@ -78,7 +78,7 @@ h6,
 .h5,
 .h6 {
   font-family: Merula;
-  color: #ed0f1a;
+  color: #c7bfbf;
 }
 h2 a,
 h3 a,
@@ -90,10 +90,10 @@ h6 a,
 .h4 a,
 .h5 a,
 .h6 a {
-  color: C7BFBF;
+  color: #c7bfbf;
 }
 a {
-  color: C7BFBF;
+  color: #c7bfbf;
 }
 .form-group > input[type="text"],
 .form-group > input[type="password"],
@@ -127,10 +127,11 @@ a {
   box-shadow: none;
 }
 .navbar-default .navbar-nav > .active > a {
-  color: white;
+  color: transparent;
 }
 .navbar-default a {
-  color: #C7BFBF;
+  color: #c7bfbf;
+  hover: #80a2de;
 }
 .navbar-default .navbar-header {
   width: 100%;
@@ -163,10 +164,10 @@ a {
   border-width: 0px;
 }
 .tree .active > a {
-  background: transparent;
+  background: #470147;
 }
 .tree li > a:hover {
-  background: transparent;
+  background-color: transparent;
 }
 .thumb {
   width: 100px;
@@ -187,9 +188,10 @@ a {
   width: 1140px;
 }
 .album-title {
-  position: static;
+  position: relative;
+  left: 14%;
   margin: auto;
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
 }
 .title-default {
@@ -214,7 +216,7 @@ a {
   border-top: 0;
 }
 #banner-title.banner-sticky-top {
-  background-color: #c4b6ed;
+  background-color: #80a2de;
   left: 0;
   padding-left: 32px;
   padding-top: 10px;
@@ -226,7 +228,7 @@ a {
   margin-top: 400px;
 }
 .form-actions {
-  background-color: #c4b6ed;
+  background-color: #80a2de;
   border-top: 0px;
 }
 footer {

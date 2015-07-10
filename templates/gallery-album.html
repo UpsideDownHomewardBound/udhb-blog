@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load mezzanine_tags keyword_tags staticfiles %}
 
-{% block meta_title %}{{ page.meta_title }}{% endblock %}
+{% block meta_title %}{{ album.name }}{% endblock %}
 
 
 {% block meta_description %}/webcam-pictures/{% metablock %}
@@ -24,4 +24,8 @@
 {% endfor %}
 </div>
 
+{% endblock %}
+
+{% block right_panel %}
+{% include "blog/includes/filter_panel.html" %}
 {% endblock %}

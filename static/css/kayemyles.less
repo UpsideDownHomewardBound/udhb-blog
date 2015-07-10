@@ -6,12 +6,14 @@
 @holy-red:              #ED0F1A;
 @dusty-red:             #913E42;
 @pale-pink:             #FFE6E7;
+@apricot:               #FCAC5B;
 
 @crazy-blue:            #401CA5;
 @dark-blue:             #16034B;
-@light-blue:            #C4B6ED;
+@light-blue:            #80A2DE;
 @darkerish-blue:        #428bca;
 
+@light-grey:            #C7BFBF;
 
 @font-face {
         font-family: 'futurism';
@@ -63,7 +65,7 @@ body {
   padding-top: 0;
 
   .active {
-    color: @holy-red;
+    color: @light-grey;
     font-weight: bold;
   }
 
@@ -78,11 +80,11 @@ body {
 
   p, ol, ul, li {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    color: #FCAC5B;
+    color: @apricot;
   }
 
   .aside {
-    background-color: #470147;
+    background-color: @dark-purple;
     color: white;
     line-height: 16px;
     margin-left: 20px;
@@ -102,14 +104,14 @@ body {
 
 h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
   font-family: Merula;
-  color: @holy-red;
+  color: @light-grey;
   a {
-    color: C7BFBF;
+    color: @light-grey;
   }
 }
 
 a {
-  color: C7BFBF;
+  color: @light-grey;
 }
 
 .form-group > input[type="text"], .form-group > input[type="password"], .form-group > input[type="datetime"], .form-group > input[type="datetime-local"], .form-group > input[type="date"], .form-group > input[type="month"], .form-group > input[type="time"], .form-group > input[type="week"], .form-group > input[type="number"], .form-group > input[type="email"], .form-group > input[type="url"], .form-group > input[type="search"], .form-group > input[type="tel"], .form-group > input[type="color"], .form-group > select, .form-group > textarea {
@@ -133,11 +135,12 @@ a {
   box-shadow:none;
 
   .navbar-nav > .active > a {
-    color: white;
+    color: transparent;
   }
 
   a {
-    color: #C7BFBF;
+    color: @light-grey;
+    hover: @light-blue;
   }
 
   .navbar-header {
@@ -179,11 +182,11 @@ a {
 .tree {
 
   .active > a {
-    background: transparent;
+    background: @dark-purple;
   }
 
   li > a:hover {
-    background: transparent;
+    background-color: transparent;
   }
 }
 
@@ -212,9 +215,10 @@ a {
 }
 
 .album-title {
-  position: static;
+  position: relative;
+  left: 14%;
   margin: auto;
-  text-align: center;
+  text-align: left;
   margin-top: 20px;
 }
 
