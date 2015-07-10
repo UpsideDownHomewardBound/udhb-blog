@@ -22,6 +22,13 @@ class ImageForm(ModelForm):
 
     class Meta:
         model = Image
+        fields = ['name', 'datetime_taken']
+
+
+class AlbumForm(ModelForm):
+
+    class Meta:
+        model = Album
         fields = ['name']
 
 
@@ -34,6 +41,10 @@ def edit_album(request, album_slug):
 
     valid = form_set.is_valid()
 
+    album_form = AlbumForm(data,
+                           instance=album,
+                           prefix="album_form")
+
     for form in form_set:
         order_widget = form.fields['order'].widget
         order_widget.attrs['class'] = "order_input"
@@ -41,9 +52,10 @@ def edit_album(request, album_slug):
                                     instance=form.instance.image,
                                     prefix=form.instance.image.id)
 
-        valid = valid and form.image_form.is_valid()
+        valid = valid and form.image_form.is_valid() and album_form.is_valid()
 
     if valid:
+        album_form.save()
         form_set.save()
 
         for form in form_set:
@@ -51,5 +63,5 @@ def edit_album(request, album_slug):
 
 
     return render(request, "gallery-edit-album.html",
-                  {'album': album,
+                  {'album_form': album_form,
                    'form_set': form_set})

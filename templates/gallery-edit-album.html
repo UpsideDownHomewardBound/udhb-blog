@@ -28,12 +28,13 @@
                 });
             },
 
-        }).disableSelection();
+        });
     });
 </script>
 
     <form action="" method="POST">{% csrf_token %}
     {{ form_set.management_form }}
+    {{album_form}}
     <table><tbody class="sortable">
     {% for form in form_set %}
         {{ form.non_field_errors }}

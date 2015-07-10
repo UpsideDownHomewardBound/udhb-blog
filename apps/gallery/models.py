@@ -54,6 +54,7 @@ class Album(models.Model):
 
     @property
     def container(self):
+        # This is effectively a get-or-create flow.
         try:
             return self.container_obj
         except AttributeError:
@@ -63,9 +64,9 @@ class Album(models.Model):
         if not self.name:
             self.name = self.slug.replace('-', ' ').capitalize()
 
-        # This is effectively a get-or-create flow.
-        self.container_obj = pyrax.cloudfiles.create_container(self.slug)
-        self.container_obj.make_public()
+        if not self.id:  # We only need to create the container the first time.
+            self.container_obj = pyrax.cloudfiles.create_container(self.slug)
+            self.container_obj.make_public()
         return super(Album, self).save(*args, **kwargs)
 
 
