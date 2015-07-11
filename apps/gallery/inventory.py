@@ -94,6 +94,7 @@ def gather_albums_and_images(gallery_dir):
                     rotation = rotate_values[orientation_value]
                     logger.info("Rotating %s %s degrees" % (full_path, rotation))
                     im = im.rotate(rotation)
+                    im.save(full_path)
 
                 show_filename = os.path.splitext(filename)[0] + "-show"
                 show_full_path = "%s/temp_image_resizing/%s" % (subdir, show_filename)
