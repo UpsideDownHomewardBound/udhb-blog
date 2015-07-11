@@ -12,6 +12,11 @@
     img {
         height: 100px;
     }
+    .handle {
+        font-size: 40px;
+        margin-top: 25px;
+        position: absolute;
+    }
 </style>
 
 <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
@@ -21,7 +26,8 @@
 <script type="text/javascript">
     $(function(){
         $('.sortable').sortable({
-            handle: "img",
+            handle: ".handle",
+            cursor: 'move',
             stop: function () {
                 $('input.order_input').each(function(counter) {
                     $(this).val((counter + 1) * 10);
@@ -39,7 +45,12 @@
     {% for form in form_set %}
         {{ form.non_field_errors }}
         <tr style="{% cycle 'background-color:#9D0A9D;' 'background-color: #C4B6ED;' as rowcolors %}, width:575px;">
-            <td class="thumb"><img src="{{form.instance.image.thumb_url}}"/></td>
+            <td class="thumb">
+                <a href="{{form.instance.get_absolute_url}}">
+                    <img src="{{form.instance.image.thumb_url}}"/>
+                </a>
+                <span class="handle">📷</span>
+            </td>
             <td>
                 <table>
                     {{form.image_form.as_table}}

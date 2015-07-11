@@ -1,16 +1,23 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from apps.gallery.models import Album, ImagePlacementInAlbum, Image
 from django.forms.models import modelformset_factory, modelform_factory, ModelForm
 
 
 def gallery(request):
-    return render(request, "gallery.html")
+    return render(request,
+                  "gallery.html",
+                  )
 
 
 def album_display(request, album_slug):
     album = Album.objects.get(slug=album_slug)
-    return render(request, "gallery-album.html", {'album': album})
+    return render(request,
+                  "gallery-album.html",
+                  {'album': album,
+                   'image_id': request.GET.get('image', None)
+                   },
+                  )
 
 
 PlacementFormSet = modelformset_factory(ImagePlacementInAlbum,

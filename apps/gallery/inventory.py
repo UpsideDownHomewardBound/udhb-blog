@@ -79,6 +79,22 @@ def gather_albums_and_images(gallery_dir):
                 logger.info("Opening %s to resize." % full_path)
                 im = PILImage.open(full_path)
 
+                # Figure out if the picture needs to be rotated and rotate it.
+                try:
+                    orientation_value = exif_tags['Image Orientation'].values[0]
+                except KeyError:
+                    orientation_value = None
+                rotate_values = {
+                    3: 180,
+                    6: 270,
+                    8: 90
+                }
+                if orientation_value in rotate_values:
+                    # Rotate and save the picture
+                    rotation = rotate_values[orientation_value]
+                    logger.info("Rotating %s %s degrees" % (full_path, rotation))
+                    im = im.rotate(rotation)
+
                 show_filename = os.path.splitext(filename)[0] + "-show"
                 show_full_path = "%s/temp_image_resizing/%s" % (subdir, show_filename)
                 show = im.copy()
@@ -99,16 +115,22 @@ def gather_albums_and_images(gallery_dir):
                 image.rack('show', show_full_path, container, im.format)
                 image.rack('thumb', thumb_full_path, container, im.format)
 
-                logger.info("Finished gathering %s.  Removing temp files." % filename)
+                logger.info("Ready to save Image and ImagePlacement.")
                 image.save()
                 ImagePlacementInAlbum.objects.create(
                     image=image,
                     album=album,
-                    order=counter,
                 )
 
+                logger.info("Finished gathering %s.  Removing temp files." % filename)
                 os.remove(show_full_path)
                 os.remove(thumb_full_path)
+
+        # If the album is newly created, set the order by taken_datetime.
+        if album_created:
+            for counter, placement in enumerate(album.placements.order_by('image__datetime_taken')):
+                placement.order = counter * 10
+                placement.save()
 
         os.rmdir("%s/%s" % (subdir, "temp_image_resizing"))
 

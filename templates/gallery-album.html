@@ -16,10 +16,18 @@
 
 {% block main %}
 
+<script type="text/javascript">
+    {% if image_id %}
+      $(function() {
+        $('#image-{{image_id}}').click();
+      })
+    {% endif %}
+</script>
+
 <div class="gallery-album">
 {% for placement in album.placements.all %}
     <a href="{{placement.image.show_url}}" class="swipebox" title="{{placement.image.name}}">
-        <img class="thumb" src="{{placement.image.thumb_url}}" alt="{{placement.caption}}">
+        <img class="thumb" src="{{placement.image.thumb_url}}" alt="{{placement.caption}}" id="image-{{placement.image.id}}">
     </a>
 {% endfor %}
 </div>
