@@ -40,7 +40,7 @@ LOGGING = {
 
     'handlers': {
         'console': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'console'
             },
@@ -52,12 +52,13 @@ LOGGING = {
         },
 
     'loggers': {
-        '': {
+        '*': {
             'handlers': ['console', 'sentry'],
-            'level': 'DEBUG',
+            'level': 'WARNING',
             'propagate': False,
             },
-        'apps.labor': {
+        'inventory': {
+            'handlers': ['console', 'sentry'],
             'level': 'INFO',
             'propagate': True,
         },

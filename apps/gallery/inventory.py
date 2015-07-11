@@ -6,7 +6,7 @@ from apps.gallery.models import Album, Image, ImagePlacementInAlbum
 import logging
 from django.conf import settings
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("inventory")
 
 
 GALLERY_ROOT = '%s/gallery-holder' % settings.PROJECT_ROOT

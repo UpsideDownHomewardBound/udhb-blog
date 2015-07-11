@@ -7,7 +7,7 @@ import pyrax
 import urllib
 import urlparse
 import logging
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("inventory")
 
 
 class Image(models.Model):
