@@ -37,6 +37,9 @@ body .active {
   color: #c7bfbf;
   font-weight: bold;
 }
+body img {
+  image-orientation: from-image;
+}
 .middle blockquote {
   background-color: #470147;
   color: white;

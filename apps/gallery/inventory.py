@@ -79,38 +79,21 @@ def gather_albums_and_images(gallery_dir):
                 logger.info("Opening %s to resize." % full_path)
                 im = PILImage.open(full_path)
 
-                # Figure out if the picture needs to be rotated and rotate it.
-                try:
-                    orientation_value = exif_tags['Image Orientation'].values[0]
-                except KeyError:
-                    orientation_value = None
-                rotate_values = {
-                    3: 180,
-                    6: 270,
-                    8: 90
-                }
-                if orientation_value in rotate_values:
-                    # Rotate and save the picture
-                    rotation = rotate_values[orientation_value]
-                    logger.info("Rotating %s %s degrees" % (full_path, rotation))
-                    im = im.rotate(rotation)
-                    im.save(full_path)
-
-                show_filename = os.path.splitext(filename)[0] + "-show"
+                show_filename = os.path.splitext(filename)[0] + "-show" + os.path.splitext(filename)[1]
                 show_full_path = "%s/temp_image_resizing/%s" % (subdir, show_filename)
                 show = im.copy()
                 height = im.size[1] / ((im.size[0] / 1600) or 1)
                 show.thumbnail((1600, height), PILImage.ANTIALIAS)
                 logger.info("Saving show size at %s" % show_full_path)
-                show.save(show_full_path, "JPEG")
+                show.save(show_full_path, "JPEG", exif=im.info['exif'])
 
-                thumb_filename = os.path.splitext(filename)[0] + "-thumb"
+                thumb_filename = os.path.splitext(filename)[0] + "-thumb" + os.path.splitext(filename)[1]
                 thumb_full_path = "%s/temp_image_resizing/%s" % (subdir, thumb_filename)
                 thumb = im.copy()
                 height = im.size[1] / ((im.size[0] / 1600) or 1)
                 thumb.thumbnail((150, height), PILImage.ANTIALIAS)
                 logger.info("Saving thumb size at %s" % thumb_full_path)
-                thumb.save(thumb_full_path, "JPEG")
+                thumb.save(thumb_full_path, "JPEG", exif=im.info['exif'])
 
                 image.rack('full', full_path, container, im.format)
                 image.rack('show', show_full_path, container, im.format)

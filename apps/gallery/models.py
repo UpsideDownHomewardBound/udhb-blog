@@ -32,7 +32,11 @@ class Image(models.Model):
     def rack(self, size, file_path, container, format):
         logger.info("Racking %s, %s size, to %s" % (file_path, size, container))
         with open(file_path) as f:
-            full_name = "%s-%s" % (self.filename, size)
+
+            f_list = self.filename.split('.')
+            f_list.insert(-1, size)
+            full_name = '.'.join(f_list)
+
             logger.info("Uploading %s" % full_name)
             cdn_obj = container.store_object(
                 full_name,
@@ -43,7 +47,7 @@ class Image(models.Model):
             encoded_name = urllib.quote(cdn_obj.name)
             setattr(self,
                     "%s_url" % size,
-                    urlparse.urljoin(container.cdn_uri, encoded_name)
+                    urlparse.urljoin(container.cdn_ssl_uri, encoded_name)
                     )
             logger.info("Finished racking %s at %s size." % (full_name, size))
 
