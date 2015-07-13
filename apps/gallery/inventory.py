@@ -85,7 +85,7 @@ def gather_albums_and_images(gallery_dir):
                 height = im.size[1] / ((im.size[0] / 1600) or 1)
                 show.thumbnail((1600, height), PILImage.ANTIALIAS)
                 logger.info("Saving show size at %s" % show_full_path)
-                show.save(show_full_path, "JPEG", exif=im.info['exif'])
+                show.save(show_full_path, "JPEG", exif=im.info.get('exif', ''))
 
                 thumb_filename = os.path.splitext(filename)[0] + "-thumb" + os.path.splitext(filename)[1]
                 thumb_full_path = "%s/temp_image_resizing/%s" % (subdir, thumb_filename)
@@ -93,7 +93,7 @@ def gather_albums_and_images(gallery_dir):
                 height = im.size[1] / ((im.size[0] / 1600) or 1)
                 thumb.thumbnail((150, height), PILImage.ANTIALIAS)
                 logger.info("Saving thumb size at %s" % thumb_full_path)
-                thumb.save(thumb_full_path, "JPEG", exif=im.info['exif'])
+                thumb.save(thumb_full_path, "JPEG", exif=im.info.get('exif', ''))
 
                 image.rack('full', full_path, container, im.format)
                 image.rack('show', show_full_path, container, im.format)
