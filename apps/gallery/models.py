@@ -57,6 +57,12 @@ class Album(models.Model):
     description = models.TextField()
     slug = models.SlugField()
 
+    # Denormalized
+    most_recent_image_taken = models.ForeignKey(
+        Image, blank=True, null=True, related_name="albums_in_which_this_is_the_most_recent_taken")
+    most_recent_image_uploaded = models.ForeignKey(
+        Image, blank=True, null=True,  related_name="albums_in_which_this_is_the_most_recent_uploaded")
+
     def __unicode__(self):
         return self.name
 
@@ -80,6 +86,18 @@ class Album(models.Model):
     def get_absolute_url(self):
         return "/gallery/%s" % self.slug
 
+    def reorder_by_date_taken(self):
+        for counter, placement in enumerate(self.placements.order_by('image__datetime_taken')):
+            placement.order = counter * 10
+            placement.save()
+
+    @property
+    def created(self):
+        return self.most_recent_image_taken.datetime_taken
+
+    @property
+    def title(self):
+        return "Gallery: %s" % self.name
 
 class ImagePlacementInAlbum(models.Model):
     image = models.ForeignKey(Image)
@@ -95,11 +113,28 @@ class ImagePlacementInAlbum(models.Model):
         return "%s in %s" % (self.image, self.album)
 
     def save(self, *args, **kwargs):
+
         if not self.order:
             highest_order = self.album.placements.all().aggregate(Max('order'))['order__max'] or 0
             self.order = highest_order + 10
             logger.info("No order provided.  Setting order to %s" % self.order)
-        super(ImagePlacementInAlbum, self).save(*args, **kwargs)
+        placement = super(ImagePlacementInAlbum, self).save(*args, **kwargs)
+
+        old_most_recent_taken = self.album.most_recent_image_taken
+        old_most_recent_uploaded = self.album.most_recent_image_uploaded
+
+        self.album.most_recent_image_taken = self.album.placements.exclude(image__datetime_taken__isnull=True).latest('image__datetime_taken').image
+
+        if not old_most_recent_taken == self.album.most_recent_image_taken:
+            logger.info('Most recent image taken was %s, is now %s' % (old_most_recent_taken, self.album.most_recent_image_taken))
+
+        self.album.most_recent_image_uploaded = self.album.placements.latest('image__datetime_uploaded').image
+
+        if not old_most_recent_uploaded == self.album.most_recent_image_uploaded:
+            logger.info('Most recent image taken was %s, is now %s' % (old_most_recent_uploaded, self.album.most_recent_image_uploaded))
+
+        self.album.save()
+        return placement
 
     def get_absolute_url(self):
         return "%s?image=%s" % (self.album.get_absolute_url(), self.image.id)

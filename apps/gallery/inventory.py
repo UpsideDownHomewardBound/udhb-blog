@@ -112,9 +112,7 @@ def gather_albums_and_images(gallery_dir):
 
         # If the album is newly created, set the order by taken_datetime.
         if album_created:
-            for counter, placement in enumerate(album.placements.order_by('image__datetime_taken')):
-                placement.order = counter * 10
-                placement.save()
+            album.reorder_by_date_taken()
 
         os.rmdir("%s/%s" % (subdir, "temp_image_resizing"))
 
