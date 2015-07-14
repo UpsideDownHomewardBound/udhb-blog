@@ -22,7 +22,7 @@ def album_display(request, album_slug):
 
 PlacementFormSet = modelformset_factory(ImagePlacementInAlbum,
                                         extra=0,
-                                        fields=['caption', 'order'])
+                                        fields=['caption', 'order', 'featured'])
 
 
 class ImageForm(ModelForm):
@@ -55,6 +55,7 @@ def edit_album(request, album_slug):
     for form in form_set:
         order_widget = form.fields['order'].widget
         order_widget.attrs['class'] = "order_input"
+        order_widget.is_hidden = True
         form.image_form = ImageForm(data,
                                     instance=form.instance.image,
                                     prefix=form.instance.image.id)

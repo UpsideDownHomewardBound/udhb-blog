@@ -27,7 +27,11 @@
 <div class="gallery-album">
 {% for placement in album.placements.all %}
     <a href="{{placement.image.show_url}}" class="swipebox" title="{{placement.image.name}}">
-        <img class="thumb" src="{{placement.image.thumb_url}}" alt="{{placement.caption}}" id="image-{{placement.image.id}}">
+        {% if placement.featured %}
+            <img class="featured-thumb" src="{{placement.image.show_url}}" alt="{{placement.caption}}" id="image-{{placement.image.id}}">
+        {% else %}
+            <img class="thumb" src="{{placement.image.thumb_url}}" alt="{{placement.caption}}" id="image-{{placement.image.id}}">
+        {% endif %}
     </a>
 {% endfor %}
 </div>

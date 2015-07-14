@@ -93,7 +93,10 @@ class Album(models.Model):
 
     @property
     def created(self):
-        return self.most_recent_image_taken.datetime_taken
+        try:
+            return self.most_recent_image_taken.datetime_taken
+        except AttributeError:
+            return None
 
     @property
     def title(self):
@@ -104,6 +107,7 @@ class ImagePlacementInAlbum(models.Model):
     album = models.ForeignKey(Album, related_name='placements')
     caption = models.CharField(max_length=200, blank=True, null=True)
     order = models.IntegerField()
+    featured = models.BooleanField(default=False)
 
     class Meta:
         unique_together = ('image', 'album', 'order')
