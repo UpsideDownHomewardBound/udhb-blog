@@ -175,10 +175,18 @@ a {
 .thumb {
   width: 100px;
   margin: 29px;
+  float: left;
 }
 .featured-thumb {
-  width: 400px;
-  margin: 30px;
+  width: 284px;
+  margin: 31px 20px 20px;
+  float: left;
+}
+.gallery-album img {
+  width: 100%;
+}
+.gallery-album img {
+  list-style: none;
 }
 .banner {
   text-align: center;
@@ -189,10 +197,11 @@ a {
 }
 .banner #banner-title {
   text-shadow: 3px 3px #222;
+  width: 1140px;
   font-family: coconutpoinnt;
   color: #FFF;
   line-height: 0.9em;
-  width: 1140px;
+  width: 850px;
 }
 .album-title {
   position: relative;
