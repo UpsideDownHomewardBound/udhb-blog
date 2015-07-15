@@ -173,14 +173,30 @@ a {
   background-color: transparent;
 }
 .gallery-album .thumb {
-  width: 100px;
   margin: 20px;
+}
+.gallery-album .thumb.None {
+  width: 114px;
   float: left;
 }
-.gallery-album .featured-thumb {
-  width: 252px;
-  margin: 20px;
+.gallery-album .thumb.L,
+.gallery-album .thumb.R,
+.gallery-album .thumb.N {
+  width: 267px;
+}
+.gallery-album .thumb.L {
   float: left;
+}
+.gallery-album .thumb.R {
+  float: right;
+  margin-right: 29px;
+}
+.gallery-album .thumb.N {
+  float: none;
+  display: inline;
+}
+.gallery-album .thumb.N img {
+  width: 267px;
 }
 .gallery-album img {
   width: 100%;

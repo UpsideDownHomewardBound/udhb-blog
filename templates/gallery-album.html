@@ -26,8 +26,8 @@
 
 <ul class="gallery-album">
 {% for placement in album.placements.all %}
-    <li class = "{% if placement.featured %}featured-thumb{% else %}thumb{% endif %}">
-        <a href="{{placement.image.show_url}}" class="swipebox" title="{{placement.image.name}}">
+    <li class = "thumb {{placement.featured}}">
+        <a href="{{placement.image.show_url}}" class="swipebox" title="{{placement.caption}}">
             {% if placement.featured %}
                 <img src="{{placement.image.show_url}}" alt="{{placement.caption}}" id="image-{{placement.image.id}}">
             {% else %}

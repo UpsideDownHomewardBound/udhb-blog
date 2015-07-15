@@ -53,7 +53,7 @@ def edit_album(request, album_slug):
                            prefix="album_form")
 
     for form in form_set:
-        order_widget = form.fields['order'].widget = forms.HiddenInput()
+        order_widget = form.fields['order'].widget
         order_widget.attrs['class'] = "order_input"
         form.image_form = ImageForm(data,
                                     instance=form.instance.image,

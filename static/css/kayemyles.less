@@ -197,15 +197,34 @@ a {
 .gallery-album {
 
     .thumb {
-      width: 100px;
       margin: 20px;
+    }
+
+    .thumb.None {
+      width: 114px;
       float: left;
     }
 
-    .featured-thumb {
-        width: 252px;
-        margin: 20px;
-        float: left;
+    .thumb.L, .thumb.R, .thumb.N {
+        width: 267px;
+    }
+
+    .thumb.L {
+      float: left;
+    }
+
+    .thumb.R {
+      float: right;
+      margin-right: 29px;
+    }
+
+    .thumb.N {
+      float: none;
+      display:inline;
+    }
+
+    .thumb.N img {
+      width: 267px;
     }
 
     img {
