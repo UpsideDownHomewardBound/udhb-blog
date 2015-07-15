@@ -190,6 +190,7 @@ a {
 .gallery-album .thumb.R {
   float: right;
   margin-right: 29px;
+  margin-left: 19px;
 }
 .gallery-album .thumb.N {
   float: none;
