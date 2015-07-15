@@ -102,12 +102,22 @@ class Album(models.Model):
     def title(self):
         return "Gallery: %s" % self.name
 
+
 class ImagePlacementInAlbum(models.Model):
+
     image = models.ForeignKey(Image)
     album = models.ForeignKey(Album, related_name='placements')
     caption = models.CharField(max_length=200, blank=True, null=True)
     order = models.IntegerField()
-    featured = models.BooleanField(default=False)
+    featured = models.CharField(blank=True,
+                                null=True,
+                                max_length=10,
+                                choices=(
+                                    ('R', 'Right'),
+                                    ('L', 'Left'),
+                                    ('N', 'No Float')
+                                    )
+                                )
 
     class Meta:
         unique_together = ('image', 'album', 'order')
