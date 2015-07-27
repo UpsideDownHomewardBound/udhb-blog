@@ -9,7 +9,7 @@ from hendrix.experience import crosstown_traffic
 class MainCallBlast(ConferenceBlast):
 
     phones = '+18106233203',
-    clients = '1_justin_mobile', '1_web_extn'
+    clients = '1_justin_mobile', '2_web_jMyles'
     time_to_wait_for_answer = 15
 
 
