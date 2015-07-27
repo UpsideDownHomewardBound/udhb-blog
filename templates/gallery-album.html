@@ -24,13 +24,19 @@
     {% endif %}
 </script>
 
-<div class="gallery-album">
+<ul class="gallery-album">
 {% for placement in album.placements.all %}
-    <a href="{{placement.image.show_url}}" class="swipebox" title="{{placement.image.name}}">
-        <img class="thumb" src="{{placement.image.thumb_url}}" alt="{{placement.caption}}" id="image-{{placement.image.id}}">
-    </a>
+    <li class = "thumb {{placement.featured}}">
+        <a href="{{placement.image.show_url}}" class="swipebox" title="{{placement.caption}}">
+            {% if placement.featured %}
+                <img src="{{placement.image.show_url}}" alt="{{placement.caption}}" id="image-{{placement.image.id}}">
+            {% else %}
+                <img src="{{placement.image.thumb_url}}" alt="{{placement.caption}}" id="image-{{placement.image.id}}">
+            {% endif %}
+        </a>
+    </li>
 {% endfor %}
-</div>
+</ul>
 
 {% endblock %}
 

@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from apps.gallery.models import Album, ImagePlacementInAlbum, Image
 from django.forms.models import modelformset_factory, modelform_factory, ModelForm
-
+from django import forms
 
 def gallery(request):
     return render(request,
@@ -22,7 +22,7 @@ def album_display(request, album_slug):
 
 PlacementFormSet = modelformset_factory(ImagePlacementInAlbum,
                                         extra=0,
-                                        fields=['caption', 'order'])
+                                        fields=['caption', 'order', 'featured'])
 
 
 class ImageForm(ModelForm):
@@ -38,7 +38,7 @@ class AlbumForm(ModelForm):
         model = Album
         fields = ['name']
 
-
+# @login_required
 def edit_album(request, album_slug):
     album = Album.objects.get(slug=album_slug)
 

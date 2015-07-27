@@ -4,7 +4,7 @@
 @dark-purple:           #470147;
 
 @holy-red:              #ED0F1A;
-@dusty-red:             #913E42;
+@dusty-red:             #800000;
 @pale-pink:             #FFE6E7;
 @apricot:               #FCAC5B;
 
@@ -88,7 +88,7 @@ body {
   }
 
   .aside {
-    background-color: @dark-purple;
+    background-color: @dusty-red;
     color: white;
     line-height: 16px;
     margin-left: 20px;
@@ -194,9 +194,48 @@ a {
   }
 }
 
-.thumb {
-  width: 100px;
-  margin: 29px;
+.gallery-album {
+
+    .thumb {
+      margin: 20px;
+    }
+
+    .thumb.None {
+      width: 114px;
+      float: left;
+    }
+
+    .thumb.L, .thumb.R, .thumb.N {
+        width: 267px;
+    }
+
+    .thumb.L {
+      float: left;
+    }
+
+    .thumb.R {
+      float: right;
+      margin-right: 39px;
+      margin-left: 18px;
+    }
+
+    .thumb.N {
+      float: none;
+      display:inline;
+    }
+
+    .thumb.N img {
+      width: 267px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    li {
+        list-style: none;
+    }
+
 }
 
 .banner {
@@ -213,7 +252,7 @@ a {
       font-family: coconutpoinnt;
       color: #FFF;
       line-height: 0.9em;
-      width: 1140px;
+      width: 850px;
   }
 
 }

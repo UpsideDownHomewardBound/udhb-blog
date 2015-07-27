@@ -9,6 +9,7 @@ from .models import Theme
 
 page_fieldsets = deepcopy(PageAdmin.fieldsets)
 page_fieldsets[0][1]['fields'].insert(-2, "theme")
+page_fieldsets[0][1]["fields"].insert(-3, "content")
 
 blog_fieldsets = deepcopy(BlogPostAdmin.fieldsets)
 blog_fieldsets[0][1]["fields"].insert(-2, "theme")

@@ -18,7 +18,7 @@ function slowDecorate() {
 function bannerSize(startingSize) {
       var scrollTop = $(window).scrollTop();
       scrollRemaining = startingSize - scrollTop;
-      size = (scrollRemaining / 5) - 10;
+      size = (scrollRemaining / 6) - 10;
       if (size < 1) {
         size = 0  // Some browsers don't like very small or negative font sizes.
       }
@@ -75,6 +75,6 @@ function textColor() {
 
 ;( function( $ ) {
 
-	$( '.swipebox' ).swipebox();
+	$( '.swipebox' ).swipebox({hideBarsDelay : 10000,});
 
 } )( jQuery );

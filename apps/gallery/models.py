@@ -93,17 +93,31 @@ class Album(models.Model):
 
     @property
     def created(self):
-        return self.most_recent_image_taken.datetime_taken
+        try:
+            return self.most_recent_image_taken.datetime_taken
+        except AttributeError:
+            return None
 
     @property
     def title(self):
         return "Gallery: %s" % self.name
 
+
 class ImagePlacementInAlbum(models.Model):
+
     image = models.ForeignKey(Image)
     album = models.ForeignKey(Album, related_name='placements')
     caption = models.CharField(max_length=200, blank=True, null=True)
     order = models.IntegerField()
+    featured = models.CharField(blank=True,
+                                null=True,
+                                max_length=10,
+                                choices=(
+                                    ('R', 'Right'),
+                                    ('L', 'Left'),
+                                    ('N', 'No Float')
+                                    )
+                                )
 
     class Meta:
         unique_together = ('image', 'album', 'order')

@@ -52,7 +52,7 @@ body img {
   color: #fcac5b;
 }
 .middle .aside {
-  background-color: #470147;
+  background-color: #800000;
   color: white;
   line-height: 16px;
   margin-left: 20px;
@@ -172,9 +172,38 @@ a {
 .tree li > a:hover {
   background-color: transparent;
 }
-.thumb {
-  width: 100px;
-  margin: 29px;
+.gallery-album .thumb {
+  margin: 20px;
+}
+.gallery-album .thumb.None {
+  width: 114px;
+  float: left;
+}
+.gallery-album .thumb.L,
+.gallery-album .thumb.R,
+.gallery-album .thumb.N {
+  width: 267px;
+}
+.gallery-album .thumb.L {
+  float: left;
+}
+.gallery-album .thumb.R {
+  float: right;
+  margin-right: 39px;
+  margin-left: 18px;
+}
+.gallery-album .thumb.N {
+  float: none;
+  display: inline;
+}
+.gallery-album .thumb.N img {
+  width: 267px;
+}
+.gallery-album img {
+  width: 100%;
+}
+.gallery-album li {
+  list-style: none;
 }
 .banner {
   text-align: center;
@@ -185,10 +214,11 @@ a {
 }
 .banner #banner-title {
   text-shadow: 3px 3px #222;
+  width: 1140px;
   font-family: coconutpoinnt;
   color: #FFF;
   line-height: 0.9em;
-  width: 1140px;
+  width: 850px;
 }
 .album-title {
   position: relative;
