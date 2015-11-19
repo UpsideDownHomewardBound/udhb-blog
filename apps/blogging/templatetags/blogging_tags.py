@@ -41,7 +41,5 @@ def recent_content(limit=5, tag=None, username=None, category=None):
     blog_post_list = list(blog_posts[:limit])
     albums = list(Album.objects.order_by('most_recent_image_taken')[:limit])
     all_content_candidates = blog_post_list + albums
-    for c in all_content_candidates:
-        print c, c.created
     latest_content = sorted(all_content_candidates, key=lambda c: c.created, reverse=True)[:limit]
     return latest_content
