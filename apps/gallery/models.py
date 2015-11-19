@@ -56,6 +56,7 @@ class Album(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
     slug = models.SlugField()
+    album_initialized = models.DateTimeField(auto_now_add=True)
 
     # Denormalized
     most_recent_image_taken = models.ForeignKey(
@@ -96,7 +97,8 @@ class Album(models.Model):
         try:
             return self.most_recent_image_taken.datetime_taken
         except AttributeError:
-            return None
+            # TODO: emit warning("Most recent image had no datetime taken")
+            return self.album_initialized
 
     @property
     def title(self):
