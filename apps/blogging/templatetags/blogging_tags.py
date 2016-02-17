@@ -39,7 +39,7 @@ def recent_content(limit=5, tag=None, username=None, category=None):
         except User.DoesNotExist:
             return []
     blog_post_list = list(blog_posts[:limit])
-    albums = list(Album.objects.order_by('most_recent_image_taken')[:limit])
+    albums = list(Album.objects.order_by('-most_recent_image_taken__datetime_uploaded')[:limit])
     all_content_candidates = blog_post_list + albums
     latest_content = sorted(all_content_candidates, key=lambda c: c.created, reverse=True)[:limit]
     return latest_content
