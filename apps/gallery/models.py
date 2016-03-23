@@ -57,6 +57,7 @@ class Album(models.Model):
     description = models.TextField()
     slug = models.SlugField()
     album_initialized = models.DateTimeField(auto_now_add=True)
+    show_in_lists = models.BooleanField(default=True)
 
     # Denormalized
     most_recent_image_taken = models.ForeignKey(
